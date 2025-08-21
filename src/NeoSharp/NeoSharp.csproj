@@ -9,17 +9,17 @@
     <AssemblyName>NeoSharp</AssemblyName>
     <RootNamespace>NeoSharp</RootNamespace>
     <Version>1.0.0</Version>
-    <Authors>NeoSharp Contributors</Authors>
+    <Authors>jimmy</Authors>
     <Description>A comprehensive C# library for Neo blockchain development, converted from NeoSwift</Description>
-    <Copyright>Copyright © NeoSharp Contributors</Copyright>
+    <Copyright>Copyright © jimmy</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/neo-project/NeoSwift</RepositoryUrl>
+    <RepositoryUrl>https://github.com/r3e-network/NeoSharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>neo;blockchain;cryptocurrency;smart-contracts;nep;dapp;nep17;nep11;neo3</PackageTags>
     
     <!-- NuGet Package Properties -->
     <PackageId>NeoSharp</PackageId>
-    <PackageProjectUrl>https://github.com/neo-project/NeoSwift</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/r3e-network/NeoSharp</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
