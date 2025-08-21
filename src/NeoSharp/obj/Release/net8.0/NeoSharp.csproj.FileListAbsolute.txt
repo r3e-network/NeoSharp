@@ -1,0 +1,15 @@
+/tmp/neosharp-repo/src/NeoSharp/obj/Release/net8.0/NeoSharp.csproj.AssemblyReference.cache
+/tmp/neosharp-repo/src/NeoSharp/obj/Release/net8.0/NeoSharp.GeneratedMSBuildEditorConfig.editorconfig
+/tmp/neosharp-repo/src/NeoSharp/obj/Release/net8.0/NeoSharp.AssemblyInfoInputs.cache
+/tmp/neosharp-repo/src/NeoSharp/obj/Release/net8.0/NeoSharp.AssemblyInfo.cs
+/tmp/neosharp-repo/src/NeoSharp/obj/Release/net8.0/NeoSharp.csproj.CoreCompileInputs.cache
+/tmp/neosharp-repo/src/NeoSharp/obj/Release/net8.0/NeoSharp.sourcelink.json
+/tmp/neosharp-repo/src/NeoSharp/bin/Release/net8.0/NeoSharp.deps.json
+/tmp/neosharp-repo/src/NeoSharp/bin/Release/net8.0/NeoSharp.dll
+/tmp/neosharp-repo/src/NeoSharp/bin/Release/net8.0/NeoSharp.pdb
+/tmp/neosharp-repo/src/NeoSharp/bin/Release/net8.0/NeoSharp.xml
+/tmp/neosharp-repo/src/NeoSharp/obj/Release/net8.0/NeoSharp.dll
+/tmp/neosharp-repo/src/NeoSharp/obj/Release/net8.0/refint/NeoSharp.dll
+/tmp/neosharp-repo/src/NeoSharp/obj/Release/net8.0/NeoSharp.xml
+/tmp/neosharp-repo/src/NeoSharp/obj/Release/net8.0/NeoSharp.pdb
+/tmp/neosharp-repo/src/NeoSharp/obj/Release/net8.0/ref/NeoSharp.dll

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "coUF4jZoJCA=",
+  "dgSpecHash": "8aJRsaeSewg=",
   "success": true,
-  "projectFilePath": "/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/NeoSharp.Tests.csproj",
+  "projectFilePath": "/tmp/neosharp-repo/tests/NeoSharp.Tests/NeoSharp.Tests.csproj",
   "expectedPackageFiles": [
     "/home/ubuntu/.nuget/packages/bouncycastle.cryptography/2.3.1/bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "/home/ubuntu/.nuget/packages/castle.core/5.1.1/castle.core.5.1.1.nupkg.sha512",

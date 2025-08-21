@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rL2JzKljT+s=",
+  "dgSpecHash": "e0ABhsQNqeA=",
   "success": true,
-  "projectFilePath": "/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/NeoSharp.csproj",
+  "projectFilePath": "/tmp/neosharp-repo/src/NeoSharp/NeoSharp.csproj",
   "expectedPackageFiles": [
     "/home/ubuntu/.nuget/packages/bouncycastle.cryptography/2.3.1/bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "/home/ubuntu/.nuget/packages/microsoft.extensions.configuration/8.0.0/microsoft.extensions.configuration.8.0.0.nupkg.sha512",

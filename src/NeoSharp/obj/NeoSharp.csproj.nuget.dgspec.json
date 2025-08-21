@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/NeoSharp.csproj": {}
+    "/tmp/neosharp-repo/src/NeoSharp/NeoSharp.csproj": {}
   },
   "projects": {
-    "/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/NeoSharp.csproj": {
+    "/tmp/neosharp-repo/src/NeoSharp/NeoSharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/NeoSharp.csproj",
+        "projectUniqueName": "/tmp/neosharp-repo/src/NeoSharp/NeoSharp.csproj",
         "projectName": "NeoSharp",
-        "projectPath": "/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/NeoSharp.csproj",
+        "projectPath": "/tmp/neosharp-repo/src/NeoSharp/NeoSharp.csproj",
         "packagesPath": "/home/ubuntu/.nuget/packages/",
-        "outputPath": "/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/obj/",
+        "outputPath": "/tmp/neosharp-repo/src/NeoSharp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ubuntu/.nuget/NuGet/NuGet.Config"
