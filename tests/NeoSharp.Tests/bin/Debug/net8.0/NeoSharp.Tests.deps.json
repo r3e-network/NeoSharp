@@ -11,7 +11,7 @@
           "FluentAssertions": "6.12.0",
           "Microsoft.NET.Test.Sdk": "17.10.0",
           "Moq": "4.20.70",
-          "NeoSharp": "1.0.0",
+          "NeoSharp": "2.0.1",
           "xunit": "2.9.0",
           "xunit.runner.visualstudio": "2.8.2"
         },
@@ -613,7 +613,7 @@
         }
       },
       "xunit.runner.visualstudio/2.8.2": {},
-      "NeoSharp/1.0.0": {
+      "NeoSharp/2.0.1": {
         "dependencies": {
           "BouncyCastle.Cryptography": "2.3.1",
           "Microsoft.Extensions.Http": "8.0.1",
@@ -625,8 +625,8 @@
         },
         "runtime": {
           "NeoSharp.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
+            "assemblyVersion": "2.0.1",
+            "fileVersion": "2.0.1.0"
           }
         }
       }
@@ -904,7 +904,7 @@
       "path": "xunit.runner.visualstudio/2.8.2",
       "hashPath": "xunit.runner.visualstudio.2.8.2.nupkg.sha512"
     },
-    "NeoSharp/1.0.0": {
+    "NeoSharp/2.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

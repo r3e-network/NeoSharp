@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NeoSharp.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9e35c1e7a4d0e36a46cc8ed4ad5c79a9cf887876")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7177354cd782edb055cc44bbe4bd38d9980456b1")]
 [assembly: System.Reflection.AssemblyProductAttribute("NeoSharp.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NeoSharp.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

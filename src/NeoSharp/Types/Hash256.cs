@@ -166,7 +166,7 @@ namespace NeoSharp.Types
             return thisBigInt.CompareTo(otherBigInt);
         }
 
-        public override string ToString() => ToHex();
+        public override string ToString() => "0x" + ToHex();
 
         public static bool operator ==(Hash256 left, Hash256 right) => left.Equals(right);
         public static bool operator !=(Hash256 left, Hash256 right) => !left.Equals(right);
