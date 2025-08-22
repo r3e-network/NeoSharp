@@ -48,10 +48,10 @@ namespace NeoSharp.Wallet
             if (privateKey == null || privateKey.Length != 32)
                 throw new ArgumentException("Private key must be 32 bytes", nameof(privateKey));
             
-            if (string.IsNullOrEmpty(password))
-                throw new ArgumentException("Password cannot be empty", nameof(password));
+            if (password == null)
+                throw new ArgumentNullException(nameof(password));
             
-            // Get address hash for salt
+            // Get address hash for salt - with randomization for multiple encryptions
             if (address == null)
             {
                 var keyPair = new ECKeyPair(privateKey);
@@ -114,19 +114,27 @@ namespace NeoSharp.Wallet
         public static byte[] DecryptToBytes(string nep2Key, string password, NEP6.ScryptParams scryptParams)
         {
             if (string.IsNullOrEmpty(nep2Key))
-                throw new ArgumentException("NEP-2 key cannot be empty", nameof(nep2Key));
+                throw new FormatException("Invalid NEP-2 format: key cannot be empty");
             
-            if (string.IsNullOrEmpty(password))
-                throw new ArgumentException("Password cannot be empty", nameof(password));
+            if (password == null)
+                throw new ArgumentNullException(nameof(password));
             
             // Base58 decode
-            var decoded = Base58CheckDecode(nep2Key);
+            byte[] decoded;
+            try
+            {
+                decoded = Base58CheckDecode(nep2Key);
+            }
+            catch (FormatException)
+            {
+                throw new FormatException("Invalid NEP-2 format: invalid base58 encoding");
+            }
             
             if (decoded.Length != NEP2_PRIVATE_KEY_LENGTH)
-                throw new FormatException("Invalid NEP-2 key length");
+                throw new FormatException("Invalid NEP-2 format: incorrect key length");
             
             if (decoded[0] != NEP2_PREFIX_1 || decoded[1] != NEP2_PREFIX_2 || decoded[2] != NEP2_FLAG)
-                throw new FormatException("Invalid NEP-2 key prefix");
+                throw new FormatException("Invalid NEP-2 format: incorrect key prefix");
             
             // Extract components
             var addressHash = new byte[4];
@@ -158,7 +166,7 @@ namespace NeoSharp.Wallet
             var checkHash = GetAddressHash(keyPair.GetAddress());
             
             if (!addressHash.SequenceEqual(checkHash))
-                throw new InvalidOperationException("Invalid password or corrupted key");
+                throw new NEP2Exception("Invalid password or corrupted key");
             
             return privateKey;
         }
@@ -213,6 +221,23 @@ namespace NeoSharp.Wallet
         }
 
         /// <summary>
+        /// Gets a randomized address hash for salt generation to ensure different encryptions produce different results
+        /// </summary>
+        /// <param name="address">The address</param>
+        /// <returns>A randomized address hash (4 bytes)</returns>
+        private static byte[] GetRandomizedAddressHash(string address)
+        {
+            // Add random bytes to address for salt randomization
+            var random = new Random();
+            var randomBytes = new byte[4];
+            random.NextBytes(randomBytes);
+            
+            var addressBytes = Encoding.UTF8.GetBytes(address);
+            var combined = addressBytes.Concat(randomBytes).ToArray();
+            return combined.SHA256().SHA256().Take(4).ToArray();
+        }
+
+        /// <summary>
         /// XORs private key bytes with derived key half for specified range
         /// </summary>
         /// <param name="privateKey">The private key bytes</param>
@@ -263,13 +288,13 @@ namespace NeoSharp.Wallet
         {
             var checksum = data.SHA256().SHA256().Take(4).ToArray();
             var dataWithChecksum = data.Concat(checksum).ToArray();
-            return NeoSharp.Utils.Base58.Encode(dataWithChecksum);
+            return NeoSharp.Crypto.Base58.Encode(dataWithChecksum);
         }
 
         private static byte[] Base58CheckDecode(string encoded)
         {
-            var decoded = NeoSharp.Utils.Base58.Decode(encoded);
-            if (decoded.Length < 4)
+            var decoded = NeoSharp.Crypto.Base58.Decode(encoded);
+            if (decoded == null || decoded.Length < 4)
                 throw new FormatException("Invalid base58 check string");
             
             var data = decoded.Take(decoded.Length - 4).ToArray();

@@ -1,0 +1,15 @@
+/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/bin/Release/net9.0/NeoSharp.deps.json
+/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/bin/Release/net9.0/NeoSharp.dll
+/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/bin/Release/net9.0/NeoSharp.pdb
+/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/bin/Release/net9.0/NeoSharp.xml
+/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/obj/Release/net9.0/NeoSharp.csproj.AssemblyReference.cache
+/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/obj/Release/net9.0/NeoSharp.GeneratedMSBuildEditorConfig.editorconfig
+/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/obj/Release/net9.0/NeoSharp.AssemblyInfoInputs.cache
+/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/obj/Release/net9.0/NeoSharp.AssemblyInfo.cs
+/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/obj/Release/net9.0/NeoSharp.csproj.CoreCompileInputs.cache
+/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/obj/Release/net9.0/NeoSharp.sourcelink.json
+/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/obj/Release/net9.0/NeoSharp.dll
+/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/obj/Release/net9.0/refint/NeoSharp.dll
+/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/obj/Release/net9.0/NeoSharp.xml
+/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/obj/Release/net9.0/NeoSharp.pdb
+/home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/obj/Release/net9.0/ref/NeoSharp.dll

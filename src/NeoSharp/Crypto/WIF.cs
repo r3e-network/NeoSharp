@@ -47,8 +47,9 @@ namespace NeoSharp.Crypto
 
             try
             {
-                // Build the extended key: prefix + private_key + compressed_flag
-                var extendedKey = new byte[PrivateKeySize + 2]; // +1 for prefix, +1 for compressed flag
+                // Build the extended key: prefix + private_key [+ compressed_flag]
+                var extendedKeySize = compressed ? PrivateKeySize + 2 : PrivateKeySize + 1; // +1 for prefix, +1 for compressed flag (if compressed)
+                var extendedKey = new byte[extendedKeySize];
                 extendedKey[0] = WifPrefix;
                 privateKey.CopyTo(extendedKey, 1);
                 

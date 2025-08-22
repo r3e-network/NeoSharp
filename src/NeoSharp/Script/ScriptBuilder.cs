@@ -257,7 +257,7 @@ namespace NeoSharp.Script
         /// <param name="data">The string data to add</param>
         /// <returns>This ScriptBuilder instance</returns>
         public ScriptBuilder PushData(string data) => 
-            PushData(data.ToByteArray());
+            PushData(System.Text.Encoding.UTF8.GetBytes(data));
 
         /// <summary>
         /// Adds data to the script with the correct length prefix
@@ -266,9 +266,17 @@ namespace NeoSharp.Script
         /// <returns>This ScriptBuilder instance</returns>
         public ScriptBuilder PushData(byte[] data)
         {
-            if (data == null || data.Length == 0)
+            if (data == null)
             {
                 return OpCode(Script.OpCode.Push0);
+            }
+            
+            if (data.Length == 0)
+            {
+                // Empty data should use PushData1 with length 0, not Push0
+                OpCode(Script.OpCode.PushData1);
+                _writer.WriteByte(0);
+                return this;
             }
 
             if (data.Length < 256)
@@ -352,10 +360,16 @@ namespace NeoSharp.Script
             if (publicKey.Length != NeoConstants.PublicKeySizeCompressed)
                 throw new ArgumentException($"Public key must be {NeoConstants.PublicKeySizeCompressed} bytes", nameof(publicKey));
 
-            return new ScriptBuilder()
-                .PushData(publicKey)
-                .SysCall("System.Crypto.CheckSig")
-                .ToArray();
+            // Build script matching Neo format: PUSHDATA + public key + CheckSig syscall
+            var script = new ScriptBuilder();
+            script.PushData(publicKey);
+            script.OpCode(Script.OpCode.SysCall);
+            // Use the proper CheckSig interop service hash (big-endian)
+            var checkSigBytes = BitConverter.GetBytes(Types.InteropService.Crypto.CheckSig);
+            if (BitConverter.IsLittleEndian)
+                Array.Reverse(checkSigBytes);
+            script._writer.WriteBytes(checkSigBytes);
+            return script.ToArray();
         }
 
         /// <summary>
@@ -379,9 +393,14 @@ namespace NeoSharp.Script
                 builder.PushData(key.GetEncoded(true));
             }
             
-            return builder.PushInteger(keys.Length)
-                .SysCall("System.Crypto.CheckMultisig")
-                .ToArray();
+            builder.PushInteger(keys.Length);
+            builder.OpCode(Script.OpCode.SysCall);
+            // Use the proper CheckMultisig interop service hash (big-endian)
+            var checkMultisigBytes = BitConverter.GetBytes(Types.InteropService.Crypto.CheckMultisig);
+            if (BitConverter.IsLittleEndian)
+                Array.Reverse(checkMultisigBytes);
+            builder._writer.WriteBytes(checkMultisigBytes);
+            return builder.ToArray();
         }
 
         /// <summary>

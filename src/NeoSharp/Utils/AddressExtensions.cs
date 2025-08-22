@@ -10,8 +10,7 @@ namespace NeoSharp.Utils
     /// </summary>
     public static class AddressExtensions
     {
-        private const byte AddressVersion = 0x35;
-        private const string Base58Alphabet = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+        private const byte AddressVersion = 0x35; // Neo N3 address version
 
         /// <summary>
         /// Converts script hash to Neo address
@@ -55,12 +54,13 @@ namespace NeoSharp.Utils
                 // Decode from Base58
                 var addressBytes = Base58Decode(address);
                 
-                if (addressBytes.Length != 25)
+                if (addressBytes.Length < 25)
                     throw new ArgumentException("Invalid address length", nameof(address));
 
-                // Extract payload and checksum
-                var payload = addressBytes.Take(21).ToArray();
-                var checksum = addressBytes.Skip(21).ToArray();
+                // Extract payload and checksum (take only first 25 bytes if more present)
+                var relevantBytes = addressBytes.Take(25).ToArray();
+                var payload = relevantBytes.Take(21).ToArray();
+                var checksum = relevantBytes.Skip(21).Take(4).ToArray();
 
                 // Verify checksum
                 var expectedChecksum = payload.Sha256().Sha256().Take(4).ToArray();
@@ -92,74 +92,12 @@ namespace NeoSharp.Utils
 
         private static string Base58Encode(byte[] data)
         {
-            if (data.Length == 0)
-                return string.Empty;
-
-            // Count leading zeros
-            int leadingZeros = 0;
-            while (leadingZeros < data.Length && data[leadingZeros] == 0)
-                leadingZeros++;
-
-            // Convert to big integer and encode
-            var result = "";
-            var value = System.Numerics.BigInteger.Zero;
-            
-            // Build big integer from bytes
-            for (int i = 0; i < data.Length; i++)
-            {
-                value = value * 256 + data[i];
-            }
-
-            // Convert to Base58
-            while (value > 0)
-            {
-                var remainder = (int)(value % 58);
-                result = Base58Alphabet[remainder] + result;
-                value /= 58;
-            }
-
-            // Add leading 1s for leading zeros
-            result = new string('1', leadingZeros) + result;
-
-            return result;
+            return Base58.Encode(data);
         }
 
         private static byte[] Base58Decode(string encoded)
         {
-            if (string.IsNullOrEmpty(encoded))
-                return Array.Empty<byte>();
-
-            // Count leading 1s
-            int leadingOnes = 0;
-            while (leadingOnes < encoded.Length && encoded[leadingOnes] == '1')
-                leadingOnes++;
-
-            // Convert from Base58
-            var value = System.Numerics.BigInteger.Zero;
-            foreach (char c in encoded)
-            {
-                var index = Base58Alphabet.IndexOf(c);
-                if (index < 0)
-                    throw new ArgumentException($"Invalid Base58 character: {c}");
-                
-                value = value * 58 + index;
-            }
-
-            // Convert to bytes
-            var bytes = value.ToByteArray();
-            
-            // Remove unnecessary leading zero if present (BigInteger adds it for positive numbers)
-            if (bytes.Length > 1 && bytes[^1] == 0)
-                bytes = bytes.Take(bytes.Length - 1).ToArray();
-
-            // Reverse to get big-endian
-            Array.Reverse(bytes);
-
-            // Add leading zeros for leading 1s
-            var result = new byte[leadingOnes + bytes.Length];
-            Array.Copy(bytes, 0, result, leadingOnes, bytes.Length);
-
-            return result;
+            return Base58.Decode(encoded);
         }
     }
 }

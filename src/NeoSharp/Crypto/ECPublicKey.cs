@@ -18,15 +18,39 @@ namespace NeoSharp.Crypto
         /// <summary>
         /// Initializes a new instance of ECPublicKey
         /// </summary>
-        /// <param name="encodedBytes">The encoded public key bytes</param>
+        /// <param name="encodedBytes">The encoded public key bytes (33 compressed or 65 uncompressed)</param>
         public ECPublicKey(byte[] encodedBytes)
         {
             if (encodedBytes == null)
                 throw new ArgumentNullException(nameof(encodedBytes));
-            if (encodedBytes.Length != 33)
-                throw new ArgumentException("Public key must be 33 bytes (compressed)", nameof(encodedBytes));
             
-            _encodedBytes = (byte[])encodedBytes.Clone();
+            if (encodedBytes.Length == 33)
+            {
+                // Already compressed
+                _encodedBytes = (byte[])encodedBytes.Clone();
+            }
+            else if (encodedBytes.Length == 65)
+            {
+                // Uncompressed - need to compress
+                if (encodedBytes[0] != 0x04)
+                    throw new ArgumentException("Invalid uncompressed public key format", nameof(encodedBytes));
+                
+                // Extract x coordinate and determine y parity
+                var x = encodedBytes[1..33];
+                var y = encodedBytes[33..65];
+                
+                // Determine if y is even or odd
+                bool isYEven = (y[31] & 1) == 0;
+                
+                // Create compressed format: 0x02 (even y) or 0x03 (odd y) + x coordinate
+                _encodedBytes = new byte[33];
+                _encodedBytes[0] = isYEven ? (byte)0x02 : (byte)0x03;
+                Array.Copy(x, 0, _encodedBytes, 1, 32);
+            }
+            else
+            {
+                throw new ArgumentException("Public key must be 33 bytes (compressed) or 65 bytes (uncompressed)", nameof(encodedBytes));
+            }
         }
 
         /// <summary>
@@ -76,7 +100,19 @@ namespace NeoSharp.Crypto
 
         public override bool Equals(object? obj) => Equals(obj as ECPublicKey);
 
-        public override int GetHashCode() => _encodedBytes.GetHashCode();
+        public override int GetHashCode()
+        {
+            // Use a consistent hash code based on the content
+            int hash = 17;
+            unchecked
+            {
+                foreach (byte b in _encodedBytes)
+                {
+                    hash = hash * 31 + b.GetHashCode();
+                }
+            }
+            return hash;
+        }
 
         /// <summary>
         /// Verifies a signature against a message hash

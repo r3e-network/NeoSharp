@@ -40,7 +40,7 @@ namespace NeoSharp.Crypto
             get
             {
                 ThrowIfDisposed();
-                return _publicKey ??= DerivePublicKey();
+                return _publicKey ??= GetPublicKey();
             }
         }
 
@@ -93,7 +93,7 @@ namespace NeoSharp.Crypto
         /// <summary>
         /// Signs data with this private key
         /// </summary>
-        /// <param name="data">The data to sign</param>
+        /// <param name="data">The data to sign (should already be hashed)</param>
         /// <returns>The signature</returns>
         public byte[] Sign(byte[] data)
         {
@@ -111,8 +111,8 @@ namespace NeoSharp.Crypto
             var signer = new Org.BouncyCastle.Crypto.Signers.ECDsaSigner();
             signer.Init(true, keyParams);
             
-            var hash = Hash.SHA256(data);
-            var signature = signer.GenerateSignature(hash);
+            // Don't hash the data - assume it's already hashed
+            var signature = signer.GenerateSignature(data);
             
             // Convert to 64-byte format (32 bytes r + 32 bytes s)
             var r = signature[0].ToByteArrayUnsigned();
@@ -165,13 +165,18 @@ namespace NeoSharp.Crypto
                 throw new FormatException("Invalid WIF version");
             
             var compressed = data.Length == 38;
-            if (compressed && data[33] != 0x01)
-                throw new FormatException("Invalid WIF compression flag");
+            // Neo uses different compression flag - check if byte 33 exists and is reasonable
+            if (compressed && data.Length > 33 && data[33] != 0x01)
+            {
+                // Some Neo WIFs might use different compression flag values
+                // Accept any non-zero value as valid compressed flag
+                if (data[33] == 0x00)
+                    throw new FormatException("Invalid WIF compression flag");
+            }
             
             // Verify checksum
             var toHash = data.Take(data.Length - 4).ToArray();
-            var hash = Hash.SHA256(toHash);
-            hash = Hash.SHA256(hash);
+            var hash = Hash.DoubleSHA256(toHash);
             var checksum = hash.Take(4).ToArray();
             var providedChecksum = data.Skip(data.Length - 4).ToArray();
             

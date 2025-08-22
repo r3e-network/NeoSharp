@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="02fc5a51-3e01-4feb-88c0-2cf8eda2120f" name="@r3e 2025-08-22 04:16:57" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2025-08-22T04:16:57.9972048+00:00" queuing="2025-08-22T04:16:57.9972048+00:00" start="2025-08-22T04:16:57.3661658+00:00" finish="2025-08-22T04:16:58.0298167+00:00" />
+  <TestSettings name="default" id="f38fe970-b4bc-4e01-a1e0-e7f0c12e60bf">
+    <Deployment runDeploymentRoot="_r3e_2025-08-22_04_16_57" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="71dbd3e7-c9f6-4f95-a9a4-69c34396e649" testId="acd4bcec-3088-d922-c81d-7c878116fd96" testName="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithNullMethod_ShouldThrowArgumentNullException" computerName="r3e" duration="00:00:00.0018265" startTime="2025-08-22T04:16:57.9502709+00:00" endTime="2025-08-22T04:16:57.9502709+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="71dbd3e7-c9f6-4f95-a9a4-69c34396e649">
+      <Output>
+        <ErrorInfo>
+          <Message>Expected a &lt;System.ArgumentNullException&gt; to be thrown, but found &lt;System.ArgumentException&gt;:
+System.ArgumentException: The invocation function must not be empty (Parameter 'function')
+   at NeoSharp.Contract.SmartContract.InvokeFunction(String function, ContractParameter[] parameters) in /home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/Contract/SmartContract.cs:line 57
+   at NeoSharp.Tests.Contract.SmartContractTests.&lt;InvokeFunction_WithNullMethod_ShouldThrowArgumentNullException&gt;b__19_0() in /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs:line 133
+   at FluentAssertions.Specialized.ActionAssertions.InvokeSubject()
+   at FluentAssertions.Specialized.DelegateAssertions`2.InvokeSubjectWithInterception().</Message>
+          <StackTrace>   at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
+   at FluentAssertions.Specialized.DelegateAssertionsBase`2.ThrowInternal[TException](Exception exception, String because, Object[] becauseArgs)
+   at FluentAssertions.Specialized.DelegateAssertions`2.Throw[TException](String because, Object[] becauseArgs)
+   at NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithNullMethod_ShouldThrowArgumentNullException() in /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs:line 134
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4ee97ed1-dc44-4e65-b221-420afd5a844c" testId="49a4d1dc-d639-43e5-b5bf-49f3c902de94" testName="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithEmptyMethod_ShouldThrowArgumentException" computerName="r3e" duration="00:00:00.0008884" startTime="2025-08-22T04:16:57.9770729+00:00" endTime="2025-08-22T04:16:57.9770729+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4ee97ed1-dc44-4e65-b221-420afd5a844c" />
+    <UnitTestResult executionId="2b19f4e8-37e7-412d-990c-6c6f69e5c6fc" testId="2563e2a7-4774-1734-682f-9b5a97cf68dd" testName="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_ShouldCreateCorrectScript" computerName="r3e" duration="00:00:00.0037396" startTime="2025-08-22T04:16:57.9762305+00:00" endTime="2025-08-22T04:16:57.9762305+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2b19f4e8-37e7-412d-990c-6c6f69e5c6fc" />
+    <UnitTestResult executionId="58c173e6-94b1-46b2-a14e-3c58a5ba65cc" testId="125ad7c0-573e-815a-337e-6925403e5304" testName="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithNullMethod_ShouldThrowArgumentNullException" computerName="r3e" duration="00:00:00.0013116" startTime="2025-08-22T04:16:57.9538649+00:00" endTime="2025-08-22T04:16:57.9538650+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="58c173e6-94b1-46b2-a14e-3c58a5ba65cc">
+      <Output>
+        <ErrorInfo>
+          <Message>Expected a &lt;System.ArgumentNullException&gt; to be thrown, but found &lt;System.ArgumentException&gt;:
+System.ArgumentException: The invocation function must not be empty (Parameter 'function')
+   at NeoSharp.Contract.SmartContract.BuildInvokeFunctionScript(String function, ContractParameter[] parameters) in /home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/Contract/SmartContract.cs:line 73
+   at NeoSharp.Tests.Contract.SmartContractTests.&lt;BuildInvokeFunctionScript_WithNullMethod_ShouldThrowArgumentNullException&gt;b__17_0() in /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs:line 114
+   at FluentAssertions.Specialized.ActionAssertions.InvokeSubject()
+   at FluentAssertions.Specialized.DelegateAssertions`2.InvokeSubjectWithInterception().</Message>
+          <StackTrace>   at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
+   at FluentAssertions.Specialized.DelegateAssertionsBase`2.ThrowInternal[TException](Exception exception, String because, Object[] becauseArgs)
+   at FluentAssertions.Specialized.DelegateAssertions`2.Throw[TException](String because, Object[] becauseArgs)
+   at NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithNullMethod_ShouldThrowArgumentNullException() in /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs:line 115
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1fa2cf9f-ff87-4a3f-9af8-de69b34d38d9" testId="29456248-06fd-18a6-b06f-ad49591a0ced" testName="NeoSharp.Tests.Contract.SmartContractTests.Equals_ShouldCompareByScriptHash" computerName="r3e" duration="00:00:00.0095520" startTime="2025-08-22T04:16:57.9484047+00:00" endTime="2025-08-22T04:16:57.9484048+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1fa2cf9f-ff87-4a3f-9af8-de69b34d38d9">
+      <Output>
+        <ErrorInfo>
+          <Message>Expected contract1 to be NeoSharp.Contract.SmartContract{ }, but found NeoSharp.Contract.SmartContract{ }.</Message>
+          <StackTrace>   at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
+   at FluentAssertions.Primitives.ObjectAssertions`2.Be(TSubject expected, String because, Object[] becauseArgs)
+   at NeoSharp.Tests.Contract.SmartContractTests.Equals_ShouldCompareByScriptHash() in /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs:line 171
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="dab0e167-ff8b-4a8b-9a9c-358849c280f6" testId="6a5e6311-a3da-999b-519f-c3f8d768df61" testName="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithEmptyString_ShouldThrowException" computerName="r3e" duration="00:00:00.0017668" startTime="2025-08-22T04:16:57.8877970+00:00" endTime="2025-08-22T04:16:57.8877970+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dab0e167-ff8b-4a8b-9a9c-358849c280f6" />
+    <UnitTestResult executionId="9f355f94-4e77-433a-93dd-26a648ec40b5" testId="7eca7b99-1116-2d95-9313-b5869fea989d" testName="NeoSharp.Tests.Contract.SmartContractTests.SmartContract_WithNullScriptHash_ShouldThrowArgumentNullException" computerName="r3e" duration="00:00:00.0013551" startTime="2025-08-22T04:16:57.9769576+00:00" endTime="2025-08-22T04:16:57.9769576+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9f355f94-4e77-433a-93dd-26a648ec40b5">
+      <Output>
+        <ErrorInfo>
+          <Message>Expected a &lt;System.ArgumentNullException&gt; to be thrown, but found &lt;System.ArgumentException&gt;:
+System.ArgumentException: Hash string cannot be null or empty
+   at NeoSharp.Types.Hash160..ctor(String hash) in /home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/Types/Hash160.cs:line 69
+   at NeoSharp.Types.Hash160.op_Explicit(String hex) in /home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/Types/Hash160.cs:line 242
+   at NeoSharp.Tests.Contract.SmartContractTests.&lt;SmartContract_WithNullScriptHash_ShouldThrowArgumentNullException&gt;b__16_0() in /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs:line 105
+   at FluentAssertions.Specialized.ActionAssertions.InvokeSubject()
+   at FluentAssertions.Specialized.DelegateAssertions`2.InvokeSubjectWithInterception().</Message>
+          <StackTrace>   at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
+   at FluentAssertions.Specialized.DelegateAssertionsBase`2.ThrowInternal[TException](Exception exception, String because, Object[] becauseArgs)
+   at FluentAssertions.Specialized.DelegateAssertions`2.Throw[TException](String because, Object[] becauseArgs)
+   at NeoSharp.Tests.Contract.SmartContractTests.SmartContract_WithNullScriptHash_ShouldThrowArgumentNullException() in /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5627f0b2-7d1c-4959-b74c-e30a53f769d3" testId="6a1a42d1-c8ac-745c-9a41-f4fb54483f96" testName="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithEmptyMethod_ShouldThrowArgumentException" computerName="r3e" duration="00:00:00.1043935" startTime="2025-08-22T04:16:57.8852450+00:00" endTime="2025-08-22T04:16:57.8852660+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5627f0b2-7d1c-4959-b74c-e30a53f769d3" />
+    <UnitTestResult executionId="b2b9fedd-5cec-4860-854c-9353a30f5570" testId="9a5a5259-43e7-a157-ba6e-2aaadbf51c75" testName="NeoSharp.Tests.Contract.SmartContractTests.ToString_ShouldReturnScriptHashString" computerName="r3e" duration="00:00:00.0021552" startTime="2025-08-22T04:16:57.9524815+00:00" endTime="2025-08-22T04:16:57.9524816+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b2b9fedd-5cec-4860-854c-9353a30f5570">
+      <Output>
+        <ErrorInfo>
+          <Message>Expected result "NeoSharp.Contract.SmartContract" to contain "0xef4073a0f2b305a38ec4050e4d3d28bc40ea63f5".</Message>
+          <StackTrace>   at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
+   at FluentAssertions.Primitives.StringAssertions`1.Contain(String expected, String because, Object[] becauseArgs)
+   at NeoSharp.Tests.Contract.SmartContractTests.ToString_ShouldReturnScriptHashString() in /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs:line 183
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f1d545e5-4095-498c-8021-78cc0364e9c4" testId="fb9c5acf-a0a4-9474-e2d6-b90acdb6038f" testName="NeoSharp.Tests.Contract.SmartContractTests.Constructor_ShouldSetScriptHashCorrectly" computerName="r3e" duration="00:00:00.0007757" startTime="2025-08-22T04:16:57.9769969+00:00" endTime="2025-08-22T04:16:57.9769969+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f1d545e5-4095-498c-8021-78cc0364e9c4" />
+    <UnitTestResult executionId="82a1ad3e-99c5-4c18-992d-70ec14b0f9b0" testId="91cbf24d-f0bf-6c41-1756-f4dc69567fe4" testName="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithNullParameters_ShouldWork" computerName="r3e" duration="00:00:00.0018610" startTime="2025-08-22T04:16:57.8884954+00:00" endTime="2025-08-22T04:16:57.8884955+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="82a1ad3e-99c5-4c18-992d-70ec14b0f9b0" />
+    <UnitTestResult executionId="e199d9de-39cb-4e91-aab4-537ea66928c7" testId="c6ca9350-47d0-de0b-9e29-00de07b6df7a" testName="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithWhitespaceMethod_ShouldThrowArgumentException" computerName="r3e" duration="00:00:00.0014117" startTime="2025-08-22T04:16:57.9766707+00:00" endTime="2025-08-22T04:16:57.9766708+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e199d9de-39cb-4e91-aab4-537ea66928c7">
+      <Output>
+        <ErrorInfo>
+          <Message>Expected a &lt;System.ArgumentException&gt; to be thrown, but no exception was thrown.</Message>
+          <StackTrace>   at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message)
+   at FluentAssertions.Specialized.DelegateAssertionsBase`2.ThrowInternal[TException](Exception exception, String because, Object[] becauseArgs)
+   at FluentAssertions.Specialized.DelegateAssertions`2.Throw[TException](String because, Object[] becauseArgs)
+   at NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithWhitespaceMethod_ShouldThrowArgumentException() in /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs:line 218
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e847fdaa-2e4b-41ef-a43a-9668b8190be6" testId="00306738-6d37-3b3f-c2d6-1d2023d106ea" testName="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithNullParameters_ShouldWork" computerName="r3e" duration="00:00:00.0006887" startTime="2025-08-22T04:16:57.9770222+00:00" endTime="2025-08-22T04:16:57.9770223+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e847fdaa-2e4b-41ef-a43a-9668b8190be6" />
+    <UnitTestResult executionId="33c03436-855b-4890-a3e7-2766963403c6" testId="459adc09-7f49-1440-4f10-c70a3ca70d53" testName="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_ShouldCreateTransactionBuilder" computerName="r3e" duration="00:00:00.0007388" startTime="2025-08-22T04:16:57.9770478+00:00" endTime="2025-08-22T04:16:57.9770479+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="33c03436-855b-4890-a3e7-2766963403c6" />
+    <UnitTestResult executionId="916d5f93-11e7-4ea8-976b-48be6e510bed" testId="92594ce4-a29a-2f60-6b95-8de7cbb18821" testName="NeoSharp.Tests.Contract.SmartContractTests.ScriptHash_ShouldBeReadOnly" computerName="r3e" duration="00:00:00.0006891" startTime="2025-08-22T04:16:57.8892146+00:00" endTime="2025-08-22T04:16:57.8892146+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="916d5f93-11e7-4ea8-976b-48be6e510bed" />
+    <UnitTestResult executionId="9fcf9202-de71-45af-b31b-95f11541a1d1" testId="c0a24241-2665-51f1-0378-db611bcd3dd4" testName="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithWhitespaceMethod_ShouldThrowArgumentException" computerName="r3e" duration="00:00:00.0476530" startTime="2025-08-22T04:16:57.9418909+00:00" endTime="2025-08-22T04:16:57.9418910+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9fcf9202-de71-45af-b31b-95f11541a1d1">
+      <Output>
+        <ErrorInfo>
+          <Message>Expected a &lt;System.ArgumentException&gt; to be thrown, but no exception was thrown.</Message>
+          <StackTrace>   at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message)
+   at FluentAssertions.Specialized.DelegateAssertionsBase`2.ThrowInternal[TException](Exception exception, String because, Object[] becauseArgs)
+   at FluentAssertions.Specialized.DelegateAssertions`2.Throw[TException](String because, Object[] becauseArgs)
+   at NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithWhitespaceMethod_ShouldThrowArgumentException() in /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs:line 200
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithEmptyString_ShouldThrowException" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="6a5e6311-a3da-999b-519f-c3f8d768df61">
+      <Execution id="dab0e167-ff8b-4a8b-9a9c-358849c280f6" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="InvokeFunction_WithEmptyString_ShouldThrowException" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithNullParameters_ShouldWork" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="91cbf24d-f0bf-6c41-1756-f4dc69567fe4">
+      <Execution id="82a1ad3e-99c5-4c18-992d-70ec14b0f9b0" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="InvokeFunction_WithNullParameters_ShouldWork" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithNullMethod_ShouldThrowArgumentNullException" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="acd4bcec-3088-d922-c81d-7c878116fd96">
+      <Execution id="71dbd3e7-c9f6-4f95-a9a4-69c34396e649" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="InvokeFunction_WithNullMethod_ShouldThrowArgumentNullException" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithNullParameters_ShouldWork" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="00306738-6d37-3b3f-c2d6-1d2023d106ea">
+      <Execution id="e847fdaa-2e4b-41ef-a43a-9668b8190be6" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="BuildInvokeFunctionScript_WithNullParameters_ShouldWork" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_ShouldCreateCorrectScript" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="2563e2a7-4774-1734-682f-9b5a97cf68dd">
+      <Execution id="2b19f4e8-37e7-412d-990c-6c6f69e5c6fc" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="BuildInvokeFunctionScript_ShouldCreateCorrectScript" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.Equals_ShouldCompareByScriptHash" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="29456248-06fd-18a6-b06f-ad49591a0ced">
+      <Execution id="1fa2cf9f-ff87-4a3f-9af8-de69b34d38d9" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="Equals_ShouldCompareByScriptHash" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithWhitespaceMethod_ShouldThrowArgumentException" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="c0a24241-2665-51f1-0378-db611bcd3dd4">
+      <Execution id="9fcf9202-de71-45af-b31b-95f11541a1d1" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="BuildInvokeFunctionScript_WithWhitespaceMethod_ShouldThrowArgumentException" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithNullMethod_ShouldThrowArgumentNullException" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="125ad7c0-573e-815a-337e-6925403e5304">
+      <Execution id="58c173e6-94b1-46b2-a14e-3c58a5ba65cc" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="BuildInvokeFunctionScript_WithNullMethod_ShouldThrowArgumentNullException" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.ScriptHash_ShouldBeReadOnly" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="92594ce4-a29a-2f60-6b95-8de7cbb18821">
+      <Execution id="916d5f93-11e7-4ea8-976b-48be6e510bed" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="ScriptHash_ShouldBeReadOnly" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.Constructor_ShouldSetScriptHashCorrectly" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="fb9c5acf-a0a4-9474-e2d6-b90acdb6038f">
+      <Execution id="f1d545e5-4095-498c-8021-78cc0364e9c4" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="Constructor_ShouldSetScriptHashCorrectly" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithEmptyMethod_ShouldThrowArgumentException" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="49a4d1dc-d639-43e5-b5bf-49f3c902de94">
+      <Execution id="4ee97ed1-dc44-4e65-b221-420afd5a844c" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="BuildInvokeFunctionScript_WithEmptyMethod_ShouldThrowArgumentException" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithEmptyMethod_ShouldThrowArgumentException" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="6a1a42d1-c8ac-745c-9a41-f4fb54483f96">
+      <Execution id="5627f0b2-7d1c-4959-b74c-e30a53f769d3" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="InvokeFunction_WithEmptyMethod_ShouldThrowArgumentException" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithWhitespaceMethod_ShouldThrowArgumentException" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="c6ca9350-47d0-de0b-9e29-00de07b6df7a">
+      <Execution id="e199d9de-39cb-4e91-aab4-537ea66928c7" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="InvokeFunction_WithWhitespaceMethod_ShouldThrowArgumentException" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_ShouldCreateTransactionBuilder" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="459adc09-7f49-1440-4f10-c70a3ca70d53">
+      <Execution id="33c03436-855b-4890-a3e7-2766963403c6" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="InvokeFunction_ShouldCreateTransactionBuilder" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.SmartContract_WithNullScriptHash_ShouldThrowArgumentNullException" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="7eca7b99-1116-2d95-9313-b5869fea989d">
+      <Execution id="9f355f94-4e77-433a-93dd-26a648ec40b5" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="SmartContract_WithNullScriptHash_ShouldThrowArgumentNullException" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.ToString_ShouldReturnScriptHashString" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="9a5a5259-43e7-a157-ba6e-2aaadbf51c75">
+      <Execution id="b2b9fedd-5cec-4860-854c-9353a30f5570" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="ToString_ShouldReturnScriptHashString" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="acd4bcec-3088-d922-c81d-7c878116fd96" executionId="71dbd3e7-c9f6-4f95-a9a4-69c34396e649" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="49a4d1dc-d639-43e5-b5bf-49f3c902de94" executionId="4ee97ed1-dc44-4e65-b221-420afd5a844c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2563e2a7-4774-1734-682f-9b5a97cf68dd" executionId="2b19f4e8-37e7-412d-990c-6c6f69e5c6fc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="125ad7c0-573e-815a-337e-6925403e5304" executionId="58c173e6-94b1-46b2-a14e-3c58a5ba65cc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="29456248-06fd-18a6-b06f-ad49591a0ced" executionId="1fa2cf9f-ff87-4a3f-9af8-de69b34d38d9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6a5e6311-a3da-999b-519f-c3f8d768df61" executionId="dab0e167-ff8b-4a8b-9a9c-358849c280f6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7eca7b99-1116-2d95-9313-b5869fea989d" executionId="9f355f94-4e77-433a-93dd-26a648ec40b5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6a1a42d1-c8ac-745c-9a41-f4fb54483f96" executionId="5627f0b2-7d1c-4959-b74c-e30a53f769d3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9a5a5259-43e7-a157-ba6e-2aaadbf51c75" executionId="b2b9fedd-5cec-4860-854c-9353a30f5570" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fb9c5acf-a0a4-9474-e2d6-b90acdb6038f" executionId="f1d545e5-4095-498c-8021-78cc0364e9c4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="91cbf24d-f0bf-6c41-1756-f4dc69567fe4" executionId="82a1ad3e-99c5-4c18-992d-70ec14b0f9b0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c6ca9350-47d0-de0b-9e29-00de07b6df7a" executionId="e199d9de-39cb-4e91-aab4-537ea66928c7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="00306738-6d37-3b3f-c2d6-1d2023d106ea" executionId="e847fdaa-2e4b-41ef-a43a-9668b8190be6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="459adc09-7f49-1440-4f10-c70a3ca70d53" executionId="33c03436-855b-4890-a3e7-2766963403c6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="92594ce4-a29a-2f60-6b95-8de7cbb18821" executionId="916d5f93-11e7-4ea8-976b-48be6e510bed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c0a24241-2665-51f1-0378-db611bcd3dd4" executionId="9fcf9202-de71-45af-b31b-95f11541a1d1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="16" executed="16" passed="9" failed="7" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 9.0.6)
+[xUnit.net 00:00:00.05]   Discovering: NeoSharp.Tests
+[xUnit.net 00:00:00.10]   Discovered:  NeoSharp.Tests
+[xUnit.net 00:00:00.11]   Starting:    NeoSharp.Tests
+[xUnit.net 00:00:00.30]       Expected a &lt;System.ArgumentException&gt; to be thrown, but no exception was thrown.
+[xUnit.net 00:00:00.30]       Stack Trace:
+[xUnit.net 00:00:00.30]            at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+[xUnit.net 00:00:00.30]            at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+[xUnit.net 00:00:00.30]            at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+[xUnit.net 00:00:00.30]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.30]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.30]            at FluentAssertions.Execution.AssertionScope.FailWith(String message)
+[xUnit.net 00:00:00.30]            at FluentAssertions.Specialized.DelegateAssertionsBase`2.ThrowInternal[TException](Exception exception, String because, Object[] becauseArgs)
+[xUnit.net 00:00:00.30]            at FluentAssertions.Specialized.DelegateAssertions`2.Throw[TException](String because, Object[] becauseArgs)
+[xUnit.net 00:00:00.30]         /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs(200,0): at NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithWhitespaceMethod_ShouldThrowArgumentException()
+[xUnit.net 00:00:00.30]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+[xUnit.net 00:00:00.30]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.31]       Expected contract1 to be NeoSharp.Contract.SmartContract{ }, but found NeoSharp.Contract.SmartContract{ }.
+[xUnit.net 00:00:00.31]       Stack Trace:
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Primitives.ObjectAssertions`2.Be(TSubject expected, String because, Object[] becauseArgs)
+[xUnit.net 00:00:00.31]         /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs(171,0): at NeoSharp.Tests.Contract.SmartContractTests.Equals_ShouldCompareByScriptHash()
+[xUnit.net 00:00:00.31]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+[xUnit.net 00:00:00.31]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.31]       Expected a &lt;System.ArgumentNullException&gt; to be thrown, but found &lt;System.ArgumentException&gt;:
+[xUnit.net 00:00:00.31]       System.ArgumentException: The invocation function must not be empty (Parameter 'function')
+[xUnit.net 00:00:00.31]          at NeoSharp.Contract.SmartContract.InvokeFunction(String function, ContractParameter[] parameters) in /home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/Contract/SmartContract.cs:line 57
+[xUnit.net 00:00:00.31]          at NeoSharp.Tests.Contract.SmartContractTests.&lt;InvokeFunction_WithNullMethod_ShouldThrowArgumentNullException&gt;b__19_0() in /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs:line 133
+[xUnit.net 00:00:00.31]          at FluentAssertions.Specialized.ActionAssertions.InvokeSubject()
+[xUnit.net 00:00:00.31]          at FluentAssertions.Specialized.DelegateAssertions`2.InvokeSubjectWithInterception().
+[xUnit.net 00:00:00.31]       Stack Trace:
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Specialized.DelegateAssertionsBase`2.ThrowInternal[TException](Exception exception, String because, Object[] becauseArgs)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Specialized.DelegateAssertions`2.Throw[TException](String because, Object[] becauseArgs)
+[xUnit.net 00:00:00.31]         /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs(134,0): at NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithNullMethod_ShouldThrowArgumentNullException()
+[xUnit.net 00:00:00.31]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+[xUnit.net 00:00:00.31]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.31]       Expected result "NeoSharp.Contract.SmartContract" to contain "0xef4073a0f2b305a38ec4050e4d3d28bc40ea63f5".
+[xUnit.net 00:00:00.31]       Stack Trace:
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Primitives.StringAssertions`1.Contain(String expected, String because, Object[] becauseArgs)
+[xUnit.net 00:00:00.31]         /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs(183,0): at NeoSharp.Tests.Contract.SmartContractTests.ToString_ShouldReturnScriptHashString()
+[xUnit.net 00:00:00.31]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+[xUnit.net 00:00:00.31]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.31]       Expected a &lt;System.ArgumentNullException&gt; to be thrown, but found &lt;System.ArgumentException&gt;:
+[xUnit.net 00:00:00.31]       System.ArgumentException: The invocation function must not be empty (Parameter 'function')
+[xUnit.net 00:00:00.31]          at NeoSharp.Contract.SmartContract.BuildInvokeFunctionScript(String function, ContractParameter[] parameters) in /home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/Contract/SmartContract.cs:line 73
+[xUnit.net 00:00:00.31]          at NeoSharp.Tests.Contract.SmartContractTests.&lt;BuildInvokeFunctionScript_WithNullMethod_ShouldThrowArgumentNullException&gt;b__17_0() in /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs:line 114
+[xUnit.net 00:00:00.31]          at FluentAssertions.Specialized.ActionAssertions.InvokeSubject()
+[xUnit.net 00:00:00.31]          at FluentAssertions.Specialized.DelegateAssertions`2.InvokeSubjectWithInterception().
+[xUnit.net 00:00:00.31]       Stack Trace:
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Specialized.DelegateAssertionsBase`2.ThrowInternal[TException](Exception exception, String because, Object[] becauseArgs)
+[xUnit.net 00:00:00.31]            at FluentAssertions.Specialized.DelegateAssertions`2.Throw[TException](String because, Object[] becauseArgs)
+[xUnit.net 00:00:00.31]         /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs(115,0): at NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithNullMethod_ShouldThrowArgumentNullException()
+[xUnit.net 00:00:00.31]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+[xUnit.net 00:00:00.31]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.34]       Expected a &lt;System.ArgumentException&gt; to be thrown, but no exception was thrown.
+[xUnit.net 00:00:00.34]       Stack Trace:
+[xUnit.net 00:00:00.34]            at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+[xUnit.net 00:00:00.34]            at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+[xUnit.net 00:00:00.34]            at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+[xUnit.net 00:00:00.34]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.34]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.34]            at FluentAssertions.Execution.AssertionScope.FailWith(String message)
+[xUnit.net 00:00:00.34]            at FluentAssertions.Specialized.DelegateAssertionsBase`2.ThrowInternal[TException](Exception exception, String because, Object[] becauseArgs)
+[xUnit.net 00:00:00.34]            at FluentAssertions.Specialized.DelegateAssertions`2.Throw[TException](String because, Object[] becauseArgs)
+[xUnit.net 00:00:00.34]         /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs(218,0): at NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithWhitespaceMethod_ShouldThrowArgumentException()
+[xUnit.net 00:00:00.34]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+[xUnit.net 00:00:00.34]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.34]       Expected a &lt;System.ArgumentNullException&gt; to be thrown, but found &lt;System.ArgumentException&gt;:
+[xUnit.net 00:00:00.34]       System.ArgumentException: Hash string cannot be null or empty
+[xUnit.net 00:00:00.34]          at NeoSharp.Types.Hash160..ctor(String hash) in /home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/Types/Hash160.cs:line 69
+[xUnit.net 00:00:00.34]          at NeoSharp.Types.Hash160.op_Explicit(String hex) in /home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/Types/Hash160.cs:line 242
+[xUnit.net 00:00:00.34]          at NeoSharp.Tests.Contract.SmartContractTests.&lt;SmartContract_WithNullScriptHash_ShouldThrowArgumentNullException&gt;b__16_0() in /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs:line 105
+[xUnit.net 00:00:00.34]          at FluentAssertions.Specialized.ActionAssertions.InvokeSubject()
+[xUnit.net 00:00:00.34]          at FluentAssertions.Specialized.DelegateAssertions`2.InvokeSubjectWithInterception().
+[xUnit.net 00:00:00.34]       Stack Trace:
+[xUnit.net 00:00:00.34]            at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+[xUnit.net 00:00:00.34]            at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+[xUnit.net 00:00:00.34]            at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+[xUnit.net 00:00:00.34]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.34]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.34]            at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
+[xUnit.net 00:00:00.34]            at FluentAssertions.Specialized.DelegateAssertionsBase`2.ThrowInternal[TException](Exception exception, String because, Object[] becauseArgs)
+[xUnit.net 00:00:00.34]            at FluentAssertions.Specialized.DelegateAssertions`2.Throw[TException](String because, Object[] becauseArgs)
+[xUnit.net 00:00:00.34]         /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Contract/SmartContractTests.cs(106,0): at NeoSharp.Tests.Contract.SmartContractTests.SmartContract_WithNullScriptHash_ShouldThrowArgumentNullException()
+[xUnit.net 00:00:00.34]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+[xUnit.net 00:00:00.34]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.34]   Finished:    NeoSharp.Tests
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="r3e" outcome="Error" timestamp="2025-08-22T04:16:57.9405931+00:00">
+        <Text>[xUnit.net 00:00:00.30]     NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithWhitespaceMethod_ShouldThrowArgumentException [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="r3e" outcome="Error" timestamp="2025-08-22T04:16:57.9483125+00:00">
+        <Text>[xUnit.net 00:00:00.31]     NeoSharp.Tests.Contract.SmartContractTests.Equals_ShouldCompareByScriptHash [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="r3e" outcome="Error" timestamp="2025-08-22T04:16:57.9500069+00:00">
+        <Text>[xUnit.net 00:00:00.31]     NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithNullMethod_ShouldThrowArgumentNullException [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="r3e" outcome="Error" timestamp="2025-08-22T04:16:57.9522328+00:00">
+        <Text>[xUnit.net 00:00:00.31]     NeoSharp.Tests.Contract.SmartContractTests.ToString_ShouldReturnScriptHashString [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="r3e" outcome="Error" timestamp="2025-08-22T04:16:57.9536052+00:00">
+        <Text>[xUnit.net 00:00:00.31]     NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithNullMethod_ShouldThrowArgumentNullException [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="r3e" outcome="Error" timestamp="2025-08-22T04:16:58.0021532+00:00">
+        <Text>[xUnit.net 00:00:00.34]     NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithWhitespaceMethod_ShouldThrowArgumentException [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="r3e" outcome="Error" timestamp="2025-08-22T04:16:58.0021919+00:00">
+        <Text>[xUnit.net 00:00:00.34]     NeoSharp.Tests.Contract.SmartContractTests.SmartContract_WithNullScriptHash_ShouldThrowArgumentNullException [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

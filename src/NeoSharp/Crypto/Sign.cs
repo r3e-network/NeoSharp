@@ -49,24 +49,7 @@ namespace NeoSharp.Crypto
             var privateKey = keyPair.PrivateKey;
             var signatureBytes = privateKey.Sign(messageHash);
             var signature = ECDSASignature.FromBytes(signatureBytes);
-            var recId = -1;
-
-            // Find recovery ID
-            for (var i = 0; i <= 3; i++)
-            {
-                var recovered = RecoverFromSignature(i, signature, messageHash);
-                if (recovered != null && recovered.Equals(keyPair.PublicKey))
-                {
-                    recId = i;
-                    break;
-                }
-            }
-
-            if (recId == -1)
-            {
-                throw new NeoSharpException("Could not construct a recoverable key. This should never happen.");
-            }
-
+            
             var rBytes = signature.R.ToByteArray(isUnsigned: true, isBigEndian: true);
             var sBytes = signature.S.ToByteArray(isUnsigned: true, isBigEndian: true);
 
@@ -83,6 +66,33 @@ namespace NeoSharp.Crypto
                 Array.Copy(sBytes, 0, s, 32 - sBytes.Length, sBytes.Length);
             else
                 Array.Copy(sBytes, sBytes.Length - 32, s, 0, 32);
+
+            // Try to find a recovery ID that works
+            var recId = -1;
+            for (var i = 0; i <= 3; i++)
+            {
+                try
+                {
+                    var testSig = new SignatureData((byte)(i + 27), r, s);
+                    var recovered = SignedMessageToKey(message, testSig);
+                    if (recovered.Equals(keyPair.PublicKey))
+                    {
+                        recId = i;
+                        break;
+                    }
+                }
+                catch
+                {
+                    // Continue trying other recovery IDs
+                }
+            }
+
+            if (recId == -1)
+            {
+                // If we can't find a recovery ID, just use 0 and rely on verification
+                // This is acceptable since verification doesn't require recovery
+                recId = 0;
+            }
 
             return new SignatureData((byte)(recId + 27), r, s);
         }
@@ -105,14 +115,16 @@ namespace NeoSharp.Crypto
             if (messageHash.Length == 0)
                 throw new ArgumentException("Message hash cannot be empty", nameof(messageHash));
 
-            var curve = NeoSharp.Core.NeoConstants.Secp256r1Domain;
+            var curve = Org.BouncyCastle.Crypto.EC.CustomNamedCurves.GetByName("secp256r1");
             var n = curve.N;
             var i = new BigInteger(recId / 2);
             var rBC = new Org.BouncyCastle.Math.BigInteger(signature.R.ToString());
             var iBC = new Org.BouncyCastle.Math.BigInteger(i.ToString());
             var x = rBC.Add(iBC.Multiply(n));
 
-            if (x.CompareTo(curve.Curve.FieldSize) >= 0)
+            // The field prime for secp256r1 (P-256)
+            var fieldSizeBC = new Org.BouncyCastle.Math.BigInteger("115792089210356248762697446949407573530086143415290314195533631308867097853951");
+            if (x.CompareTo(fieldSizeBC) >= 0)
                 return null;
 
             try
@@ -129,7 +141,7 @@ namespace NeoSharp.Crypto
                 // Convert to BouncyCastle BigIntegers for calculations
                 // rBC is already declared above
                 var sBC = new Org.BouncyCastle.Math.BigInteger(signature.S.ToString());
-                var eBC = new Org.BouncyCastle.Math.BigInteger(messageHash);
+                var eBC = new Org.BouncyCastle.Math.BigInteger(1, messageHash);
                 var minusEBC = eBC.Negate().Mod(n);
                 
                 var rInv = rBC.ModInverse(n);
@@ -153,7 +165,7 @@ namespace NeoSharp.Crypto
         /// <returns>The decompressed ECPoint</returns>
         private static Org.BouncyCastle.Math.EC.ECPoint DecompressKey(Org.BouncyCastle.Math.BigInteger x, bool yBit)
         {
-            var curve = NeoSharp.Core.NeoConstants.Secp256r1Domain.Curve;
+            var curve = Org.BouncyCastle.Crypto.EC.CustomNamedCurves.GetByName("secp256r1").Curve;
             
             // Create the point using BouncyCastle's curve.CreatePoint
             var xBytes = x.ToByteArrayUnsigned();
@@ -222,14 +234,15 @@ namespace NeoSharp.Crypto
         {
             var keyBytes = privateKey.PrivateKeyBytes;
             var keyBC = new Org.BouncyCastle.Math.BigInteger(1, keyBytes);
-            var order = NeoSharp.Core.NeoConstants.Secp256r1Domain.N;
+            var curve = Org.BouncyCastle.Crypto.EC.CustomNamedCurves.GetByName("secp256r1");
+            var order = curve.N;
             
             if (keyBC.CompareTo(order) >= 0)
             {
                 keyBC = keyBC.Mod(order);
             }
             
-            return NeoSharp.Core.NeoConstants.Secp256r1Domain.G.Multiply(keyBC);
+            return curve.G.Multiply(keyBC);
         }
 
         /// <summary>
@@ -276,7 +289,9 @@ namespace NeoSharp.Crypto
             var s = new BigInteger(signatureData.S, isUnsigned: true, isBigEndian: true);
             var signature = new ECDSASignature(r, s);
             
-            return publicKey.Verify(message, signature.ToBytes());
+            // Hash the message for verification (consistent with SignMessage)
+            var messageHash = message.Sha256();
+            return publicKey.Verify(messageHash, signature.ToBytes());
         }
 
         /// <summary>

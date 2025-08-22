@@ -82,7 +82,7 @@ namespace NeoSharp.Serialization
         public bool ReadBoolean()
         {
             EnsureAvailable(1);
-            return _buffer[_position++] == 1;
+            return _buffer[_position++] != 0;
         }
 
         /// <summary>
@@ -303,7 +303,7 @@ namespace NeoSharp.Serialization
                 OpCode.PushData1 => ReadUnsignedByte(),
                 OpCode.PushData2 => ReadInt16(),
                 OpCode.PushData4 => ReadInt32(),
-                _ => throw new FormatException("Current position does not contain a PUSHDATA opcode")
+                _ => throw new InvalidOperationException("Current position does not contain a PUSHDATA opcode")
             };
             
             return ReadBytes(size);
@@ -396,6 +396,20 @@ namespace NeoSharp.Serialization
             };
             
             var bytes = ReadBytes(byteCount);
+            return new BigInteger(bytes, isUnsigned: false, isBigEndian: false);
+        }
+
+        /// <summary>
+        /// Reads a BigInteger from the remaining bytes in little-endian format
+        /// </summary>
+        /// <returns>The BigInteger value</returns>
+        public BigInteger ReadBigInteger()
+        {
+            var remainingBytes = Available;
+            if (remainingBytes == 0)
+                return BigInteger.Zero;
+            
+            var bytes = ReadBytes(remainingBytes);
             return new BigInteger(bytes, isUnsigned: false, isBigEndian: false);
         }
 

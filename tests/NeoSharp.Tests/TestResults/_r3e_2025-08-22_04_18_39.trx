@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="1d35ebe5-c1cd-49e7-bdfc-8976ac7d3852" name="@r3e 2025-08-22 04:18:39" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2025-08-22T04:18:39.6258796+00:00" queuing="2025-08-22T04:18:39.6258797+00:00" start="2025-08-22T04:18:39.0556532+00:00" finish="2025-08-22T04:18:39.6538808+00:00" />
+  <TestSettings name="default" id="ad9d2e5b-e35c-46a0-a107-9abc4c319793">
+    <Deployment runDeploymentRoot="_r3e_2025-08-22_04_18_39" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="b84a53b8-ffb8-4a48-ad7b-f608cbc0f379" testId="459adc09-7f49-1440-4f10-c70a3ca70d53" testName="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_ShouldCreateTransactionBuilder" computerName="r3e" duration="00:00:00.0007651" startTime="2025-08-22T04:18:39.6066989+00:00" endTime="2025-08-22T04:18:39.6066989+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b84a53b8-ffb8-4a48-ad7b-f608cbc0f379" />
+    <UnitTestResult executionId="d1911363-b0bc-4eb9-9cba-85007837d662" testId="125ad7c0-573e-815a-337e-6925403e5304" testName="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithNullMethod_ShouldThrowArgumentNullException" computerName="r3e" duration="00:00:00.0009011" startTime="2025-08-22T04:18:39.6064531+00:00" endTime="2025-08-22T04:18:39.6064531+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d1911363-b0bc-4eb9-9cba-85007837d662" />
+    <UnitTestResult executionId="50e6c783-9d38-4fed-b0f7-d4f092182141" testId="b2a5cf74-d54b-a40a-2fad-3f7112c31afc" testName="NeoSharp.Tests.Contract.SmartContractTests.SmartContract_WithNullNeoSharp_ShouldThrowArgumentNullException" computerName="r3e" duration="00:00:00.0009083" startTime="2025-08-22T04:18:39.5868668+00:00" endTime="2025-08-22T04:18:39.5868668+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="50e6c783-9d38-4fed-b0f7-d4f092182141" />
+    <UnitTestResult executionId="08f00d86-5de4-4256-88a2-1a2c086fa6d6" testId="91cbf24d-f0bf-6c41-1756-f4dc69567fe4" testName="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithNullParameters_ShouldWork" computerName="r3e" duration="00:00:00.0017951" startTime="2025-08-22T04:18:39.5786846+00:00" endTime="2025-08-22T04:18:39.5786847+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="08f00d86-5de4-4256-88a2-1a2c086fa6d6" />
+    <UnitTestResult executionId="e6e9fca6-b437-4997-b964-442258a474f5" testId="92594ce4-a29a-2f60-6b95-8de7cbb18821" testName="NeoSharp.Tests.Contract.SmartContractTests.ScriptHash_ShouldBeReadOnly" computerName="r3e" duration="00:00:00.0006921" startTime="2025-08-22T04:18:39.5794048+00:00" endTime="2025-08-22T04:18:39.5794049+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e6e9fca6-b437-4997-b964-442258a474f5" />
+    <UnitTestResult executionId="9043efd7-458c-4af0-b988-e67c9135c4f7" testId="6a1a42d1-c8ac-745c-9a41-f4fb54483f96" testName="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithEmptyMethod_ShouldThrowArgumentException" computerName="r3e" duration="00:00:00.1050712" startTime="2025-08-22T04:18:39.5755492+00:00" endTime="2025-08-22T04:18:39.5755690+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9043efd7-458c-4af0-b988-e67c9135c4f7" />
+    <UnitTestResult executionId="a30ca5e1-8015-448a-beb9-de0f24d1419d" testId="2563e2a7-4774-1734-682f-9b5a97cf68dd" testName="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_ShouldCreateCorrectScript" computerName="r3e" duration="00:00:00.0036019" startTime="2025-08-22T04:18:39.6065861+00:00" endTime="2025-08-22T04:18:39.6065861+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a30ca5e1-8015-448a-beb9-de0f24d1419d" />
+    <UnitTestResult executionId="5985d2cc-e195-4273-8564-41e6d5d7ef1b" testId="9a5a5259-43e7-a157-ba6e-2aaadbf51c75" testName="NeoSharp.Tests.Contract.SmartContractTests.ToString_ShouldReturnScriptHashString" computerName="r3e" duration="00:00:00.0017457" startTime="2025-08-22T04:18:39.5859346+00:00" endTime="2025-08-22T04:18:39.5859346+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5985d2cc-e195-4273-8564-41e6d5d7ef1b" />
+    <UnitTestResult executionId="b8b7acf7-8930-434d-b32b-89c355118e91" testId="00306738-6d37-3b3f-c2d6-1d2023d106ea" testName="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithNullParameters_ShouldWork" computerName="r3e" duration="00:00:00.0006740" startTime="2025-08-22T04:18:39.6066733+00:00" endTime="2025-08-22T04:18:39.6066733+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b8b7acf7-8930-434d-b32b-89c355118e91" />
+    <UnitTestResult executionId="3622b878-a3df-414c-bc22-daf0b6750d99" testId="fb9c5acf-a0a4-9474-e2d6-b90acdb6038f" testName="NeoSharp.Tests.Contract.SmartContractTests.Constructor_ShouldSetScriptHashCorrectly" computerName="r3e" duration="00:00:00.0006637" startTime="2025-08-22T04:18:39.6066477+00:00" endTime="2025-08-22T04:18:39.6066477+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3622b878-a3df-414c-bc22-daf0b6750d99" />
+    <UnitTestResult executionId="59d92185-bfaf-4529-a678-23fc6dfdd80d" testId="c0a24241-2665-51f1-0378-db611bcd3dd4" testName="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithWhitespaceMethod_ShouldThrowArgumentException" computerName="r3e" duration="00:00:00.0009343" startTime="2025-08-22T04:18:39.5803708+00:00" endTime="2025-08-22T04:18:39.5803709+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="59d92185-bfaf-4529-a678-23fc6dfdd80d" />
+    <UnitTestResult executionId="c8dda6df-adcf-4139-bc41-1cbe59d3943f" testId="6a5e6311-a3da-999b-519f-c3f8d768df61" testName="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithEmptyString_ShouldThrowException" computerName="r3e" duration="00:00:00.0016487" startTime="2025-08-22T04:18:39.5778521+00:00" endTime="2025-08-22T04:18:39.5778522+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c8dda6df-adcf-4139-bc41-1cbe59d3943f" />
+    <UnitTestResult executionId="a0461173-489b-4cdc-b724-f45c446d02ca" testId="49a4d1dc-d639-43e5-b5bf-49f3c902de94" testName="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithEmptyMethod_ShouldThrowArgumentException" computerName="r3e" duration="00:00:00.0010938" startTime="2025-08-22T04:18:39.6067246+00:00" endTime="2025-08-22T04:18:39.6067246+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a0461173-489b-4cdc-b724-f45c446d02ca" />
+    <UnitTestResult executionId="7e3dc4cb-aaff-44e5-9084-9c9e36346948" testId="c6ca9350-47d0-de0b-9e29-00de07b6df7a" testName="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithWhitespaceMethod_ShouldThrowArgumentException" computerName="r3e" duration="00:00:00.0009575" startTime="2025-08-22T04:18:39.6066180+00:00" endTime="2025-08-22T04:18:39.6066180+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7e3dc4cb-aaff-44e5-9084-9c9e36346948" />
+    <UnitTestResult executionId="27648eb2-954e-4419-90b2-2da53a4efc12" testId="29456248-06fd-18a6-b06f-ad49591a0ced" testName="NeoSharp.Tests.Contract.SmartContractTests.Equals_ShouldCompareByScriptHash" computerName="r3e" duration="00:00:00.0023490" startTime="2025-08-22T04:18:39.5827535+00:00" endTime="2025-08-22T04:18:39.5827536+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="27648eb2-954e-4419-90b2-2da53a4efc12" />
+    <UnitTestResult executionId="a4dfd5e6-f3be-4c76-aa8e-eb95ccf2b548" testId="acd4bcec-3088-d922-c81d-7c878116fd96" testName="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithNullMethod_ShouldThrowArgumentNullException" computerName="r3e" duration="00:00:00.0013607" startTime="2025-08-22T04:18:39.5841484+00:00" endTime="2025-08-22T04:18:39.5841484+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a4dfd5e6-f3be-4c76-aa8e-eb95ccf2b548" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_ShouldCreateCorrectScript" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="2563e2a7-4774-1734-682f-9b5a97cf68dd">
+      <Execution id="a30ca5e1-8015-448a-beb9-de0f24d1419d" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="BuildInvokeFunctionScript_ShouldCreateCorrectScript" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithNullParameters_ShouldWork" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="00306738-6d37-3b3f-c2d6-1d2023d106ea">
+      <Execution id="b8b7acf7-8930-434d-b32b-89c355118e91" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="BuildInvokeFunctionScript_WithNullParameters_ShouldWork" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithNullMethod_ShouldThrowArgumentNullException" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="acd4bcec-3088-d922-c81d-7c878116fd96">
+      <Execution id="a4dfd5e6-f3be-4c76-aa8e-eb95ccf2b548" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="InvokeFunction_WithNullMethod_ShouldThrowArgumentNullException" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_ShouldCreateTransactionBuilder" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="459adc09-7f49-1440-4f10-c70a3ca70d53">
+      <Execution id="b84a53b8-ffb8-4a48-ad7b-f608cbc0f379" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="InvokeFunction_ShouldCreateTransactionBuilder" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithWhitespaceMethod_ShouldThrowArgumentException" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="c6ca9350-47d0-de0b-9e29-00de07b6df7a">
+      <Execution id="7e3dc4cb-aaff-44e5-9084-9c9e36346948" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="InvokeFunction_WithWhitespaceMethod_ShouldThrowArgumentException" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.SmartContract_WithNullNeoSharp_ShouldThrowArgumentNullException" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="b2a5cf74-d54b-a40a-2fad-3f7112c31afc">
+      <Execution id="50e6c783-9d38-4fed-b0f7-d4f092182141" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="SmartContract_WithNullNeoSharp_ShouldThrowArgumentNullException" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.Equals_ShouldCompareByScriptHash" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="29456248-06fd-18a6-b06f-ad49591a0ced">
+      <Execution id="27648eb2-954e-4419-90b2-2da53a4efc12" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="Equals_ShouldCompareByScriptHash" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithWhitespaceMethod_ShouldThrowArgumentException" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="c0a24241-2665-51f1-0378-db611bcd3dd4">
+      <Execution id="59d92185-bfaf-4529-a678-23fc6dfdd80d" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="BuildInvokeFunctionScript_WithWhitespaceMethod_ShouldThrowArgumentException" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithNullParameters_ShouldWork" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="91cbf24d-f0bf-6c41-1756-f4dc69567fe4">
+      <Execution id="08f00d86-5de4-4256-88a2-1a2c086fa6d6" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="InvokeFunction_WithNullParameters_ShouldWork" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithEmptyMethod_ShouldThrowArgumentException" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="49a4d1dc-d639-43e5-b5bf-49f3c902de94">
+      <Execution id="a0461173-489b-4cdc-b724-f45c446d02ca" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="BuildInvokeFunctionScript_WithEmptyMethod_ShouldThrowArgumentException" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.ScriptHash_ShouldBeReadOnly" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="92594ce4-a29a-2f60-6b95-8de7cbb18821">
+      <Execution id="e6e9fca6-b437-4997-b964-442258a474f5" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="ScriptHash_ShouldBeReadOnly" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithEmptyMethod_ShouldThrowArgumentException" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="6a1a42d1-c8ac-745c-9a41-f4fb54483f96">
+      <Execution id="9043efd7-458c-4af0-b988-e67c9135c4f7" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="InvokeFunction_WithEmptyMethod_ShouldThrowArgumentException" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.BuildInvokeFunctionScript_WithNullMethod_ShouldThrowArgumentNullException" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="125ad7c0-573e-815a-337e-6925403e5304">
+      <Execution id="d1911363-b0bc-4eb9-9cba-85007837d662" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="BuildInvokeFunctionScript_WithNullMethod_ShouldThrowArgumentNullException" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.Constructor_ShouldSetScriptHashCorrectly" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="fb9c5acf-a0a4-9474-e2d6-b90acdb6038f">
+      <Execution id="3622b878-a3df-414c-bc22-daf0b6750d99" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="Constructor_ShouldSetScriptHashCorrectly" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.InvokeFunction_WithEmptyString_ShouldThrowException" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="6a5e6311-a3da-999b-519f-c3f8d768df61">
+      <Execution id="c8dda6df-adcf-4139-bc41-1cbe59d3943f" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="InvokeFunction_WithEmptyString_ShouldThrowException" />
+    </UnitTest>
+    <UnitTest name="NeoSharp.Tests.Contract.SmartContractTests.ToString_ShouldReturnScriptHashString" storage="/home/ubuntu/neoswift/neosharp/tests/neosharp.tests/bin/debug/net9.0/neosharp.tests.dll" id="9a5a5259-43e7-a157-ba6e-2aaadbf51c75">
+      <Execution id="5985d2cc-e195-4273-8564-41e6d5d7ef1b" />
+      <TestMethod codeBase="/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="NeoSharp.Tests.Contract.SmartContractTests" name="ToString_ShouldReturnScriptHashString" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="459adc09-7f49-1440-4f10-c70a3ca70d53" executionId="b84a53b8-ffb8-4a48-ad7b-f608cbc0f379" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="125ad7c0-573e-815a-337e-6925403e5304" executionId="d1911363-b0bc-4eb9-9cba-85007837d662" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b2a5cf74-d54b-a40a-2fad-3f7112c31afc" executionId="50e6c783-9d38-4fed-b0f7-d4f092182141" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="91cbf24d-f0bf-6c41-1756-f4dc69567fe4" executionId="08f00d86-5de4-4256-88a2-1a2c086fa6d6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="92594ce4-a29a-2f60-6b95-8de7cbb18821" executionId="e6e9fca6-b437-4997-b964-442258a474f5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6a1a42d1-c8ac-745c-9a41-f4fb54483f96" executionId="9043efd7-458c-4af0-b988-e67c9135c4f7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2563e2a7-4774-1734-682f-9b5a97cf68dd" executionId="a30ca5e1-8015-448a-beb9-de0f24d1419d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9a5a5259-43e7-a157-ba6e-2aaadbf51c75" executionId="5985d2cc-e195-4273-8564-41e6d5d7ef1b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="00306738-6d37-3b3f-c2d6-1d2023d106ea" executionId="b8b7acf7-8930-434d-b32b-89c355118e91" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fb9c5acf-a0a4-9474-e2d6-b90acdb6038f" executionId="3622b878-a3df-414c-bc22-daf0b6750d99" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c0a24241-2665-51f1-0378-db611bcd3dd4" executionId="59d92185-bfaf-4529-a678-23fc6dfdd80d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6a5e6311-a3da-999b-519f-c3f8d768df61" executionId="c8dda6df-adcf-4139-bc41-1cbe59d3943f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="49a4d1dc-d639-43e5-b5bf-49f3c902de94" executionId="a0461173-489b-4cdc-b724-f45c446d02ca" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c6ca9350-47d0-de0b-9e29-00de07b6df7a" executionId="7e3dc4cb-aaff-44e5-9084-9c9e36346948" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="29456248-06fd-18a6-b06f-ad49591a0ced" executionId="27648eb2-954e-4419-90b2-2da53a4efc12" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="acd4bcec-3088-d922-c81d-7c878116fd96" executionId="a4dfd5e6-f3be-4c76-aa8e-eb95ccf2b548" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="16" executed="16" passed="16" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 9.0.6)
+[xUnit.net 00:00:00.05]   Discovering: NeoSharp.Tests
+[xUnit.net 00:00:00.10]   Discovered:  NeoSharp.Tests
+[xUnit.net 00:00:00.11]   Starting:    NeoSharp.Tests
+[xUnit.net 00:00:00.27]   Finished:    NeoSharp.Tests
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

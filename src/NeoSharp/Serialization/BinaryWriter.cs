@@ -351,7 +351,16 @@ namespace NeoSharp.Serialization
         public byte[] ToArray()
         {
             _writer.Flush();
-            return _stream.ToArray();
+            
+            // If position is at 0, return empty (matches Swift behavior)
+            if (_stream.Position == 0)
+                return Array.Empty<byte>();
+                
+            // Return only the data up to current position
+            var buffer = _stream.GetBuffer();
+            var result = new byte[_stream.Position];
+            Array.Copy(buffer, 0, result, 0, (int)_stream.Position);
+            return result;
         }
 
         /// <summary>

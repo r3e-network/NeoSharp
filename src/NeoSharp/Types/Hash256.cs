@@ -117,6 +117,22 @@ namespace NeoSharp.Types
         }
 
         /// <summary>
+        /// Creates a Hash256 from little-endian byte array.
+        /// </summary>
+        /// <param name="littleEndianBytes">The bytes in little-endian order</param>
+        /// <returns>The hash</returns>
+        public static Hash256 FromLittleEndianBytes(byte[] littleEndianBytes)
+        {
+            if (littleEndianBytes == null || littleEndianBytes.Length != 32)
+                throw new ArgumentException($"Bytes must be 32 bytes long but was {littleEndianBytes?.Length ?? 0} bytes.");
+            
+            var bigEndianBytes = new byte[32];
+            Array.Copy(littleEndianBytes, bigEndianBytes, 32);
+            Array.Reverse(bigEndianBytes); // Convert to big-endian
+            return new Hash256(bigEndianBytes);
+        }
+
+        /// <summary>
         /// Serializes this hash to the given writer.
         /// </summary>
         /// <param name="writer">The binary writer</param>

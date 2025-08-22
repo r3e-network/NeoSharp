@@ -537,6 +537,29 @@ namespace NeoSharp.Wallet
         /// <summary>
         /// Disposes the account and clears sensitive data
         /// </summary>
+        /// <summary>
+        /// Determines whether the specified object is equal to this account
+        /// </summary>
+        /// <param name="obj">The object to compare with this account</param>
+        /// <returns>True if the accounts have the same script hash</returns>
+        public override bool Equals(object? obj)
+        {
+            if (obj is Account other)
+            {
+                return ScriptHash == other.ScriptHash;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Returns the hash code for this account based on its script hash
+        /// </summary>
+        /// <returns>The hash code</returns>
+        public override int GetHashCode()
+        {
+            return ScriptHash?.GetHashCode() ?? 0;
+        }
+
         public void Dispose()
         {
             if (!_disposed)

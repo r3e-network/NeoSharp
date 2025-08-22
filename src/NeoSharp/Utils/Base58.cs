@@ -79,23 +79,14 @@ namespace NeoSharp.Utils
             
             // Convert from base58
             BigInteger value = 0;
-            BigInteger power = 1;
             
-            for (int i = encoded.Length - 1; i >= 0; i--)
+            for (int i = 0; i < encoded.Length; i++)
             {
                 int digit = Alphabet.IndexOf(encoded[i]);
                 if (digit < 0)
                     throw new FormatException($"Invalid Base58 character: {encoded[i]}");
                 
-                if (i < encoded.Length - 1)
-                {
-                    value += digit * power;
-                    power *= Base;
-                }
-                else
-                {
-                    value = digit;
-                }
+                value = value * Base + digit;
             }
             
             // Convert to bytes

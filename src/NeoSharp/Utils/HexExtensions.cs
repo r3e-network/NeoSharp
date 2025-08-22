@@ -76,6 +76,21 @@ namespace NeoSharp.Utils
         }
 
         /// <summary>
+        /// Removes the hex prefix from a string.
+        /// </summary>
+        /// <param name="hex">The hex string.</param>
+        /// <returns>The hex string without prefix.</returns>
+        public static string CleanHexPrefix(this string hex)
+        {
+            if (string.IsNullOrEmpty(hex))
+                return string.Empty;
+            
+            return hex.StartsWith("0x", StringComparison.OrdinalIgnoreCase) 
+                ? hex.Substring(2) 
+                : hex;
+        }
+
+        /// <summary>
         /// Reverses a hex string (useful for endianness conversion).
         /// </summary>
         /// <param name="hex">The hex string.</param>

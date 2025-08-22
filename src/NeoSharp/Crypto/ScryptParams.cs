@@ -8,6 +8,7 @@ namespace NeoSharp.Crypto
     /// Parameters for the Scrypt password-based key derivation function.
     /// Scrypt is designed to be memory-hard and computationally expensive to resist brute-force attacks.
     /// </summary>
+    [JsonConverter(typeof(ScryptParamsJsonConverter))]
     public class ScryptParams : IEquatable<ScryptParams>
     {
         /// <summary>
@@ -100,7 +101,8 @@ namespace NeoSharp.Crypto
 
             // Check for potential integer overflow in memory calculation
             // Memory usage ≈ 128 * N * r * p bytes
-            const long maxMemory = (long)int.MaxValue / 128;
+            // Allow up to 16GB of memory usage for Scrypt operations
+            const long maxMemory = 16L * 1024 * 1024 * 1024 / 128; // 16GB / 128 bytes per unit
             if ((long)n * r * p > maxMemory)
                 throw new ArgumentException("Parameters would result in excessive memory usage");
         }

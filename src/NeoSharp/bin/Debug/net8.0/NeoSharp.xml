@@ -6519,6 +6519,13 @@
             <param name="signingThreshold">The signing threshold</param>
             <returns>The script hash</returns>
         </member>
+        <member name="M:NeoSharp.Types.Hash160.FromLittleEndianBytes(System.Byte[])">
+            <summary>
+            Creates a Hash160 from little-endian byte array.
+            </summary>
+            <param name="littleEndianBytes">The bytes in little-endian order</param>
+            <returns>The hash</returns>
+        </member>
         <member name="M:NeoSharp.Types.Hash160.Serialize(NeoSharp.Serialization.BinaryWriter)">
             <summary>
             Serializes this hash to the given writer.
@@ -6600,6 +6607,13 @@
             Creates a hash from the given data by applying SHA-256.
             </summary>
             <param name="data">The data to hash</param>
+            <returns>The hash</returns>
+        </member>
+        <member name="M:NeoSharp.Types.Hash256.FromLittleEndianBytes(System.Byte[])">
+            <summary>
+            Creates a Hash256 from little-endian byte array.
+            </summary>
+            <param name="littleEndianBytes">The bytes in little-endian order</param>
             <returns>The hash</returns>
         </member>
         <member name="M:NeoSharp.Types.Hash256.Serialize(NeoSharp.Serialization.BinaryWriter)">
@@ -7056,6 +7070,13 @@
             </summary>
             <param name="hex">The string to check.</param>
             <returns>True if valid hex, false otherwise.</returns>
+        </member>
+        <member name="M:NeoSharp.Utils.HexExtensions.CleanHexPrefix(System.String)">
+            <summary>
+            Removes the hex prefix from a string.
+            </summary>
+            <param name="hex">The hex string.</param>
+            <returns>The hex string without prefix.</returns>
         </member>
         <member name="M:NeoSharp.Utils.HexExtensions.ReverseHex(System.String)">
             <summary>

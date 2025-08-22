@@ -1,4 +1,10 @@
 /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net8.0/.msCoverageSourceRootsMapping_NeoSharp.Tests
+/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/obj/Debug/net8.0/NeoSharp.Tests.csproj.AssemblyReference.cache
+/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/obj/Debug/net8.0/NeoSharp.Tests.GeneratedMSBuildEditorConfig.editorconfig
+/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/obj/Debug/net8.0/NeoSharp.Tests.AssemblyInfoInputs.cache
+/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/obj/Debug/net8.0/NeoSharp.Tests.AssemblyInfo.cs
+/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/obj/Debug/net8.0/NeoSharp.Tests.csproj.CoreCompileInputs.cache
+/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/obj/Debug/net8.0/NeoSharp.Tests.sourcelink.json
 /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net8.0/xunit.runner.visualstudio.testadapter.dll
 /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net8.0/xunit.runner.reporters.netcoreapp10.dll
 /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net8.0/xunit.runner.utility.netcoreapp10.dll
@@ -114,12 +120,6 @@
 /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net8.0/NeoSharp.dll
 /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net8.0/NeoSharp.pdb
 /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net8.0/NeoSharp.xml
-/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/obj/Debug/net8.0/NeoSharp.Tests.csproj.AssemblyReference.cache
-/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/obj/Debug/net8.0/NeoSharp.Tests.GeneratedMSBuildEditorConfig.editorconfig
-/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/obj/Debug/net8.0/NeoSharp.Tests.AssemblyInfoInputs.cache
-/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/obj/Debug/net8.0/NeoSharp.Tests.AssemblyInfo.cs
-/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/obj/Debug/net8.0/NeoSharp.Tests.csproj.CoreCompileInputs.cache
-/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/obj/Debug/net8.0/NeoSharp.Tests.sourcelink.json
 /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/obj/Debug/net8.0/NeoSharp.F5DD365C.Up2Date
 /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/obj/Debug/net8.0/NeoSharp.Tests.dll
 /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/obj/Debug/net8.0/refint/NeoSharp.Tests.dll

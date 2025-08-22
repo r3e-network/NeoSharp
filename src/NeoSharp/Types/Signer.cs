@@ -192,6 +192,7 @@ namespace NeoSharp.Types
         CalledByEntry = 0x01,
         CustomContracts = 0x10,
         CustomGroups = 0x20,
+        WitnessRules = 0x40,
         Global = 0x80
     }
 }

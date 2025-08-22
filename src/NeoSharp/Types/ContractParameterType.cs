@@ -62,7 +62,7 @@ namespace NeoSharp.Types
         /// <summary>
         /// Map/dictionary type with key-value pairs
         /// </summary>
-        Map = 0x21,
+        Map = 0x22,
 
         /// <summary>
         /// Interop interface type for complex objects

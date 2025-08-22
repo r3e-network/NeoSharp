@@ -16,7 +16,7 @@ namespace NeoSharp.Contract
     /// <summary>
     /// Represents a smart contract on the Neo blockchain and provides methods to invoke and deploy it
     /// </summary>
-    public class SmartContract
+    public class SmartContract : IEquatable<SmartContract>
     {
         /// <summary>
         /// Default number of items to retrieve when iterating
@@ -53,8 +53,10 @@ namespace NeoSharp.Contract
         /// <exception cref="ArgumentException">Thrown when function name is empty</exception>
         public virtual TransactionBuilder InvokeFunction(string function, params ContractParameter?[] parameters)
         {
-            if (string.IsNullOrEmpty(function))
-                throw new ArgumentException("The invocation function must not be empty", nameof(function));
+            if (function == null)
+                throw new ArgumentNullException(nameof(function));
+            if (string.IsNullOrWhiteSpace(function))
+                throw new ArgumentException("The invocation function must not be empty or whitespace", nameof(function));
 
             var script = BuildInvokeFunctionScript(function, parameters);
             return new TransactionBuilder(NeoSharp).AddScript(script);
@@ -69,8 +71,10 @@ namespace NeoSharp.Contract
         /// <exception cref="ArgumentException">Thrown when function name is empty</exception>
         public virtual byte[] BuildInvokeFunctionScript(string function, params ContractParameter?[] parameters)
         {
-            if (string.IsNullOrEmpty(function))
-                throw new ArgumentException("The invocation function must not be empty", nameof(function));
+            if (function == null)
+                throw new ArgumentNullException(nameof(function));
+            if (string.IsNullOrWhiteSpace(function))
+                throw new ArgumentException("The invocation function must not be empty or whitespace", nameof(function));
 
             return new ScriptBuilder()
                 .ContractCall(ScriptHash, function, parameters)
@@ -268,8 +272,10 @@ namespace NeoSharp.Contract
             ContractParameter[] parameters,
             params Signer[] signers)
         {
-            if (string.IsNullOrEmpty(function))
-                throw new ArgumentException("The invocation function must not be empty", nameof(function));
+            if (function == null)
+                throw new ArgumentNullException(nameof(function));
+            if (string.IsNullOrWhiteSpace(function))
+                throw new ArgumentException("The invocation function must not be empty or whitespace", nameof(function));
 
             var result = await NeoSharp.InvokeFunctionAsync(ScriptHash, function, parameters, signers);
             
@@ -353,6 +359,36 @@ namespace NeoSharp.Contract
         {
             var script = ScriptBuilder.BuildContractHashScript(sender, nefChecksum, contractName);
             return Hash160.FromScript(script);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is SmartContract other && Equals(other);
+        }
+
+        public bool Equals(SmartContract? other)
+        {
+            return other != null && ScriptHash.Equals(other.ScriptHash);
+        }
+
+        public override int GetHashCode()
+        {
+            return ScriptHash.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"SmartContract({ScriptHash})";
+        }
+
+        public static bool operator ==(SmartContract? left, SmartContract? right)
+        {
+            return ReferenceEquals(left, right) || (left?.Equals(right) == true);
+        }
+
+        public static bool operator !=(SmartContract? left, SmartContract? right)
+        {
+            return !(left == right);
         }
     }
 }

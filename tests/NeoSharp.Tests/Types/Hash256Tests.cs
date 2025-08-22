@@ -1,66 +1,166 @@
 using System;
 using FluentAssertions;
+using NeoSharp.Tests.Helpers;
 using NeoSharp.Types;
 using Xunit;
 
 namespace NeoSharp.Tests.Types
 {
+    /// <summary>
+    /// Hash256 tests converted from Swift NeoSwift Hash256Tests.swift
+    /// </summary>
     public class Hash256Tests
     {
+        [Fact]
+        public void Parse_WithValidHexString_ShouldCreateHash()
+        {
+            // Test with prefix
+            var hash1 = Hash256.Parse("0xb804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a21a");
+            hash1.ToString().Should().Be("0xb804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a21a");
+
+            // Test without prefix
+            var hash2 = Hash256.Parse("b804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a21a");
+            hash2.ToString().Should().Be("0xb804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a21a");
+        }
+
+        [Fact]
+        public void Constructor_WithInvalidHex_ShouldThrowException()
+        {
+            // Invalid hex with odd length
+            Action act1 = () => Hash256.Parse("b804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a21ae");
+            act1.Should().Throw<ArgumentException>().WithMessage("*hexadecimal*");
+
+            // Invalid hex with non-hex character
+            Action act2 = () => Hash256.Parse("g804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a21a");
+            act2.Should().Throw<ArgumentException>().WithMessage("*hexadecimal*");
+
+            // Invalid length - too short
+            Action act3 = () => Hash256.Parse("0xb804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a2");
+            act3.Should().Throw<ArgumentException>().WithMessage("*32 bytes*");
+
+            // Invalid length - too long
+            Action act4 = () => Hash256.Parse("0xb804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a21a12");
+            act4.Should().Throw<ArgumentException>().WithMessage("*32 bytes*");
+        }
+
         [Fact]
         public void Constructor_WithValidBytes_ShouldCreateHash()
         {
             // Arrange
-            var bytes = new byte[32];
-            for (int i = 0; i < 32; i++)
-            {
-                bytes[i] = (byte)i;
-            }
+            var hexString = "b804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a21a";
+            var bytes = TestConstants.HexToBytes(hexString);
 
             // Act
             var hash = new Hash256(bytes);
 
             // Assert
             hash.Should().NotBeNull();
-            hash.ToArray().Should().BeEquivalentTo(bytes);
+            hash.ToString().Should().Be("0x" + hexString);
         }
 
         [Fact]
-        public void Constructor_WithInvalidLength_ShouldThrowException()
+        public void ToLittleEndianArray_ShouldReverseBytes()
         {
             // Arrange
-            var bytes = new byte[31]; // Invalid length
+            var hexString = "b804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a21a";
+            var originalBytes = TestConstants.HexToBytes(hexString);
+            var expectedReversed = new byte[originalBytes.Length];
+            Array.Copy(originalBytes, expectedReversed, originalBytes.Length);
+            Array.Reverse(expectedReversed);
+
+            // Act
+            var hash = Hash256.Parse(hexString);
+            var littleEndianBytes = hash.ToLittleEndianArray();
+
+            // Assert
+            littleEndianBytes.Should().BeEquivalentTo(expectedReversed);
+        }
+
+        [Fact]
+        public void Serialize_ShouldWriteLittleEndianBytes()
+        {
+            // Arrange
+            var hexString = "b804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a21a";
+            var originalBytes = TestConstants.HexToBytes(hexString);
+            var expectedData = new byte[originalBytes.Length];
+            Array.Copy(originalBytes, expectedData, originalBytes.Length);
+            Array.Reverse(expectedData); // Should be little endian
+
+            var hash = Hash256.Parse(hexString);
+            using var stream = new System.IO.MemoryStream();
+            using var writer = new NeoSharp.Serialization.BinaryWriter(stream);
+
+            // Act
+            hash.Serialize(writer);
+
+            // Assert
+            stream.ToArray().Should().BeEquivalentTo(expectedData);
+        }
+
+        [Fact]
+        public void Deserialize_ShouldCreateHashFromLittleEndianBytes()
+        {
+            // Arrange
+            var hexString = "b804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a21a";
+            var originalBytes = TestConstants.HexToBytes(hexString);
+            var littleEndianData = new byte[originalBytes.Length];
+            Array.Copy(originalBytes, littleEndianData, originalBytes.Length);
+            Array.Reverse(littleEndianData);
+
+            // Act
+            var hash = Hash256.FromLittleEndianBytes(littleEndianData);
+
+            // Assert
+            hash.ToString().Should().Be("0x" + hexString);
+        }
+
+        [Fact]
+        public void Equals_ShouldWorkCorrectly()
+        {
+            // Arrange
+            var bytes1 = TestConstants.HexToBytes("1aa274391ab7127ca6d6b917d413919000ebee2b14974e67b49ac62082a904b8");
+            Array.Reverse(bytes1); // Make little endian
+            var bytes2 = TestConstants.HexToBytes("b43034ab680d646f8b6ca71647aa6ba167b2eb0b3757e545f6c2715787b13272");
+            Array.Reverse(bytes2); // Make little endian
+
+            var hash1 = new Hash256(bytes1);
+            var hash2 = new Hash256(bytes2);
+            var hash3 = Hash256.Parse("0xb804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a21a");
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => new Hash256(bytes));
+            hash1.Should().NotBe(hash2);
+            hash1.Should().Be(hash1);
+            hash1.Should().Be(hash3);
+            hash1.GetHashCode().Should().Be(hash3.GetHashCode());
         }
 
         [Fact]
-        public void Parse_WithValidHexString_ShouldCreateHash()
+        public void CompareTo_ShouldOrderCorrectly()
         {
             // Arrange
-            var hexString = "0x0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20";
+            var bytes1 = TestConstants.HexToBytes("1aa274391ab7127ca6d6b917d413919000ebee2b14974e67b49ac62082a904b8");
+            Array.Reverse(bytes1);
+            var bytes2 = TestConstants.HexToBytes("b43034ab680d646f8b6ca71647aa6ba167b2eb0b3757e545f6c2715787b13272");
+            Array.Reverse(bytes2);
 
-            // Act
-            var hash = Hash256.Parse(hexString);
+            var hash1 = new Hash256(bytes1);
+            var hash2 = new Hash256(bytes2);
+            var hash3 = Hash256.Parse("0xf4609b99e171190c22adcf70c88a7a14b5b530914d2398287bd8bb7ad95a661c");
 
-            // Assert
-            hash.Should().NotBeNull();
-            hash.ToString().Should().Be(hexString);
+            // Act & Assert
+            hash1.CompareTo(hash2).Should().BeGreaterThan(0);
+            hash3.CompareTo(hash1).Should().BeGreaterThan(0);
+            hash3.CompareTo(hash2).Should().BeGreaterThan(0);
         }
 
         [Fact]
-        public void Parse_WithoutPrefix_ShouldCreateHash()
+        public void Size_ShouldReturn32()
         {
             // Arrange
-            var hexString = "0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20";
+            var hash = Hash256.Parse("b804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a21a");
 
-            // Act
-            var hash = Hash256.Parse(hexString);
-
-            // Assert
-            hash.Should().NotBeNull();
-            hash.ToString().Should().Be("0x" + hexString);
+            // Act & Assert
+            hash.Size.Should().Be(32);
         }
 
         [Fact]
@@ -73,45 +173,6 @@ namespace NeoSharp.Tests.Types
             zero.Should().NotBeNull();
             zero.ToArray().Should().OnlyContain(b => b == 0);
             zero.ToString().Should().Be("0x0000000000000000000000000000000000000000000000000000000000000000");
-        }
-
-        [Fact]
-        public void Equals_WithSameHash_ShouldReturnTrue()
-        {
-            // Arrange
-            var hex = "0x0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20";
-            var hash1 = Hash256.Parse(hex);
-            var hash2 = Hash256.Parse(hex);
-
-            // Act & Assert
-            hash1.Equals(hash2).Should().BeTrue();
-            (hash1 == hash2).Should().BeTrue();
-            (hash1 != hash2).Should().BeFalse();
-        }
-
-        [Fact]
-        public void Equals_WithDifferentHash_ShouldReturnFalse()
-        {
-            // Arrange
-            var hash1 = Hash256.Parse("0x0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20");
-            var hash2 = Hash256.Parse("0x201f1e1d1c1b1a191817161514131211100f0e0d0c0b0a090807060504030201");
-
-            // Act & Assert
-            hash1.Equals(hash2).Should().BeFalse();
-            (hash1 == hash2).Should().BeFalse();
-            (hash1 != hash2).Should().BeTrue();
-        }
-
-        [Fact]
-        public void GetHashCode_ShouldBeConsistent()
-        {
-            // Arrange
-            var hex = "0x0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20";
-            var hash1 = Hash256.Parse(hex);
-            var hash2 = Hash256.Parse(hex);
-
-            // Act & Assert
-            hash1.GetHashCode().Should().Be(hash2.GetHashCode());
         }
 
         [Theory]
@@ -128,17 +189,77 @@ namespace NeoSharp.Tests.Types
         }
 
         [Fact]
-        public void CompareTo_ShouldOrderCorrectly()
+        public void FromData_ShouldCreateHashFromData()
         {
             // Arrange
-            var hash1 = Hash256.Parse("0x0000000000000000000000000000000000000000000000000000000000000001");
-            var hash2 = Hash256.Parse("0x0000000000000000000000000000000000000000000000000000000000000002");
-            var hash3 = Hash256.Parse("0x0000000000000000000000000000000000000000000000000000000000000002");
+            var testData = System.Text.Encoding.UTF8.GetBytes("Hello, NeoSharp!");
 
-            // Act & Assert
-            hash1.CompareTo(hash2).Should().BeLessThan(0);
-            hash2.CompareTo(hash1).Should().BeGreaterThan(0);
-            hash2.CompareTo(hash3).Should().Be(0);
+            // Act
+            var hash = Hash256.FromData(testData);
+
+            // Assert
+            hash.Should().NotBeNull();
+            hash.Size.Should().Be(32);
+            hash.ToString().Should().NotBeNullOrEmpty();
+        }
+
+        [Fact]
+        public void FromLittleEndianBytes_ShouldCreateHashCorrectly()
+        {
+            // Arrange
+            var hexString = "b804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a21a";
+            var originalBytes = TestConstants.HexToBytes(hexString);
+            var littleEndianData = new byte[originalBytes.Length];
+            Array.Copy(originalBytes, littleEndianData, originalBytes.Length);
+            Array.Reverse(littleEndianData);
+
+            // Act
+            var hash = Hash256.FromLittleEndianBytes(littleEndianData);
+
+            // Assert
+            hash.ToString().Should().Be("0x" + hexString);
+        }
+
+        [Fact]
+        public void ToArray_ShouldReturnBigEndianBytes()
+        {
+            // Arrange
+            var hexString = "b804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a21a";
+            var expectedBytes = TestConstants.HexToBytes(hexString);
+
+            // Act
+            var hash = Hash256.Parse(hexString);
+            var actualBytes = hash.ToArray();
+
+            // Assert
+            actualBytes.Should().BeEquivalentTo(expectedBytes);
+        }
+
+        [Fact]
+        public void ImplicitStringConversion_ShouldReturnHexString()
+        {
+            // Arrange
+            var hexString = "b804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a21a";
+            var hash = Hash256.Parse(hexString);
+
+            // Act
+            string converted = hash;
+
+            // Assert
+            converted.Should().Be(hexString);
+        }
+
+        [Fact]
+        public void ExplicitHashConversion_ShouldCreateFromHexString()
+        {
+            // Arrange
+            var hexString = "b804a98220c69ab4674e97142beeeb00909113d417b9d6a67c12b71a3974a21a";
+
+            // Act
+            var hash = (Hash256)hexString;
+
+            // Assert
+            hash.ToString().Should().Be("0x" + hexString);
         }
     }
 }

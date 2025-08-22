@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5DnGI/QFbG4=",
+  "dgSpecHash": "3b6QCLBrjK8=",
   "success": true,
   "projectFilePath": "/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/NeoSharp.Tests.csproj",
   "expectedPackageFiles": [
@@ -41,9 +41,7 @@
     "/home/ubuntu/.nuget/packages/xunit.core/2.9.0/xunit.core.2.9.0.nupkg.sha512",
     "/home/ubuntu/.nuget/packages/xunit.extensibility.core/2.9.0/xunit.extensibility.core.2.9.0.nupkg.sha512",
     "/home/ubuntu/.nuget/packages/xunit.extensibility.execution/2.9.0/xunit.extensibility.execution.2.9.0.nupkg.sha512",
-    "/home/ubuntu/.nuget/packages/xunit.runner.visualstudio/2.8.2/xunit.runner.visualstudio.2.8.2.nupkg.sha512",
-    "/home/ubuntu/.nuget/packages/microsoft.netcore.app.ref/8.0.17/microsoft.netcore.app.ref.8.0.17.nupkg.sha512",
-    "/home/ubuntu/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.17/microsoft.aspnetcore.app.ref.8.0.17.nupkg.sha512"
+    "/home/ubuntu/.nuget/packages/xunit.runner.visualstudio/2.8.2/xunit.runner.visualstudio.2.8.2.nupkg.sha512"
   ],
   "logs": []
 }
