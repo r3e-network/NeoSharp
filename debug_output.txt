@@ -1,0 +1,49 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  NeoSharp -> /home/ubuntu/NeoSwift/NeoSharp/src/NeoSharp/bin/Debug/net9.0/NeoSharp.dll
+  NeoSharp.Tests -> /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll
+Test run for /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll (.NETCoreApp,Version=v9.0)
+VSTest version 17.12.0 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+/home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/bin/Debug/net9.0/NeoSharp.Tests.dll
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 9.0.6)
+[xUnit.net 00:00:00.05]   Discovering: NeoSharp.Tests
+[xUnit.net 00:00:00.10]   Discovered:  NeoSharp.Tests
+[xUnit.net 00:00:00.11]   Starting:    NeoSharp.Tests
+[xUnit.net 00:00:00.23]     NeoSharp.Tests.Wallet.AccountTests.GetAddress_ShouldReturnCorrectAddress [FAIL]
+[xUnit.net 00:00:00.23]       Expected address to be "NLnyLtep7jwyq1qhNPkwXbJpurC4jUT8ke" with a length of 34, but "2e1hLQVqdSvizuTzKxXTraC9FzijLQuhavAT" has a length of 36, differs near "2e1" (index 0).
+[xUnit.net 00:00:00.23]       Stack Trace:
+[xUnit.net 00:00:00.23]            at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+[xUnit.net 00:00:00.23]            at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+[xUnit.net 00:00:00.23]            at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+[xUnit.net 00:00:00.23]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.23]            at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+[xUnit.net 00:00:00.23]            at FluentAssertions.Primitives.StringEqualityValidator.ValidateAgainstLengthDifferences()
+[xUnit.net 00:00:00.23]            at FluentAssertions.Primitives.StringValidator.Validate()
+[xUnit.net 00:00:00.23]            at FluentAssertions.Primitives.StringAssertions`1.Be(String expected, String because, Object[] becauseArgs)
+[xUnit.net 00:00:00.23]         /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Wallet/AccountTests.cs(156,0): at NeoSharp.Tests.Wallet.AccountTests.GetAddress_ShouldReturnCorrectAddress()
+[xUnit.net 00:00:00.23]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+[xUnit.net 00:00:00.23]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.24]   Finished:    NeoSharp.Tests
+  Failed NeoSharp.Tests.Wallet.AccountTests.GetAddress_ShouldReturnCorrectAddress [92 ms]
+  Error Message:
+   Expected address to be "NLnyLtep7jwyq1qhNPkwXbJpurC4jUT8ke" with a length of 34, but "2e1hLQVqdSvizuTzKxXTraC9FzijLQuhavAT" has a length of 36, differs near "2e1" (index 0).
+  Stack Trace:
+     at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Primitives.StringEqualityValidator.ValidateAgainstLengthDifferences()
+   at FluentAssertions.Primitives.StringValidator.Validate()
+   at FluentAssertions.Primitives.StringAssertions`1.Be(String expected, String because, Object[] becauseArgs)
+   at NeoSharp.Tests.Wallet.AccountTests.GetAddress_ShouldReturnCorrectAddress() in /home/ubuntu/NeoSwift/NeoSharp/tests/NeoSharp.Tests/Wallet/AccountTests.cs:line 156
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+
+Test Run Failed.
+Total tests: 1
+     Failed: 1
+ Total time: 0.6244 Seconds

@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyDescriptionAttribute(("A comprehensive C# library for Neo blockchain development, converted from NeoSwif" +
     "t"))]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("2.0.2.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.0.2+e1356e27490a260324521ac0ea18f8b6626366f4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.0.2+7e2a90c874fea992be857705628c8be0b7354fc5")]
 [assembly: System.Reflection.AssemblyProductAttribute("NeoSharp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NeoSharp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("2.0.2.0")]

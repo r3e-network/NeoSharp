@@ -1,0 +1,6 @@
+/home/ubuntu/NeoSwift/NeoSharp/debug4/obj/Debug/net9.0/debug4.csproj.AssemblyReference.cache
+/home/ubuntu/NeoSwift/NeoSharp/debug4/obj/Debug/net9.0/debug4.GeneratedMSBuildEditorConfig.editorconfig
+/home/ubuntu/NeoSwift/NeoSharp/debug4/obj/Debug/net9.0/debug4.AssemblyInfoInputs.cache
+/home/ubuntu/NeoSwift/NeoSharp/debug4/obj/Debug/net9.0/debug4.AssemblyInfo.cs
+/home/ubuntu/NeoSwift/NeoSharp/debug4/obj/Debug/net9.0/debug4.csproj.CoreCompileInputs.cache
+/home/ubuntu/NeoSwift/NeoSharp/debug4/obj/Debug/net9.0/debug4.sourcelink.json
