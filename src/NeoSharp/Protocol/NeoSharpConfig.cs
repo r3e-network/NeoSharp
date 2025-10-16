@@ -19,9 +19,9 @@ namespace NeoSharp.Protocol
         public const int DEFAULT_POLLING_INTERVAL = 1000;
 
         /// <summary>
-        /// Maximum valid until block increment base.
+        /// Maximum valid until block increment base in milliseconds (24 hours).
         /// </summary>
-        public const int MAX_VALID_UNTIL_BLOCK_INCREMENT_BASE = 5760;
+        public const int MAX_VALID_UNTIL_BLOCK_INCREMENT_BASE = 86_400_000;
 
         /// <summary>
         /// Default address version for Neo3.
@@ -46,7 +46,7 @@ namespace NeoSharp.Protocol
         /// <summary>
         /// Gets or sets the maximum valid until block increment.
         /// </summary>
-        public int MaxValidUntilBlockIncrement { get; set; } = MAX_VALID_UNTIL_BLOCK_INCREMENT_BASE / DEFAULT_BLOCK_TIME * 1000;
+        public int MaxValidUntilBlockIncrement { get; set; } = MAX_VALID_UNTIL_BLOCK_INCREMENT_BASE / DEFAULT_BLOCK_TIME;
 
         /// <summary>
         /// Gets or sets whether to allow transmission on fault.

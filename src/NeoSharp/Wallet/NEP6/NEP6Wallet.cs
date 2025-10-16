@@ -7,18 +7,20 @@ using System.Text.Json.Serialization;
 using NeoSharp.Crypto;
 using NeoSharp.Types;
 
+#nullable enable
+
 namespace NeoSharp.Wallet.NEP6
 {
     /// <summary>
     /// Represents a NEP-6 standard wallet.
     /// </summary>
-    public class NEP6Wallet
+        public class NEP6Wallet
     {
         /// <summary>
         /// Gets or sets the wallet name.
         /// </summary>
         [JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the wallet version.
@@ -30,27 +32,25 @@ namespace NeoSharp.Wallet.NEP6
         /// Gets or sets the scrypt parameters.
         /// </summary>
         [JsonPropertyName("scrypt")]
-        public ScryptParams Scrypt { get; set; }
+        public ScryptParams Scrypt { get; set; } = ScryptParams.Default;
 
         /// <summary>
         /// Gets or sets the accounts.
         /// </summary>
         [JsonPropertyName("accounts")]
-        public List<NEP6Account> Accounts { get; set; }
+        public List<NEP6Account> Accounts { get; set; } = new();
 
         /// <summary>
         /// Gets or sets extra data.
         /// </summary>
         [JsonPropertyName("extra")]
-        public object Extra { get; set; }
+        public object? Extra { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the NEP6Wallet class.
         /// </summary>
         public NEP6Wallet()
         {
-            Accounts = new List<NEP6Account>();
-            Scrypt = ScryptParams.Default;
         }
 
         /// <summary>
@@ -58,11 +58,10 @@ namespace NeoSharp.Wallet.NEP6
         /// </summary>
         /// <param name="name">The wallet name.</param>
         /// <param name="scrypt">The scrypt parameters.</param>
-        public NEP6Wallet(string name, ScryptParams scrypt = null)
+        public NEP6Wallet(string name, ScryptParams? scrypt = null)
         {
-            Name = name;
+            Name = name ?? throw new ArgumentNullException(nameof(name));
             Scrypt = scrypt ?? ScryptParams.Default;
-            Accounts = new List<NEP6Account>();
         }
 
         /// <summary>
@@ -121,7 +120,7 @@ namespace NeoSharp.Wallet.NEP6
         /// </summary>
         /// <param name="address">The account address.</param>
         /// <returns>The account or null if not found.</returns>
-        public NEP6Account GetAccount(string address)
+        public NEP6Account? GetAccount(string address)
         {
             return Accounts.FirstOrDefault(a => a.Address == address);
         }
@@ -154,7 +153,7 @@ namespace NeoSharp.Wallet.NEP6
         /// Gets the default account.
         /// </summary>
         /// <returns>The default account or null if no default account.</returns>
-        public NEP6Account GetDefaultAccount()
+        public NEP6Account? GetDefaultAccount()
         {
             return Accounts.FirstOrDefault(a => a.IsDefault);
         }
@@ -186,7 +185,7 @@ namespace NeoSharp.Wallet.NEP6
         /// <param name="address">The account address.</param>
         /// <param name="password">The password to decrypt with.</param>
         /// <returns>The account or null if decryption fails.</returns>
-        public Account DecryptAccount(string address, string password)
+        public Account? DecryptAccount(string address, string password)
         {
             var nep6Account = GetAccount(address);
             if (nep6Account == null) return null;
@@ -224,7 +223,17 @@ namespace NeoSharp.Wallet.NEP6
         public static NEP6Wallet Load(string path)
         {
             var json = File.ReadAllText(path);
-            return JsonSerializer.Deserialize<NEP6Wallet>(json);
+            var wallet = JsonSerializer.Deserialize<NEP6Wallet>(json, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+
+            if (wallet == null)
+            {
+                throw new InvalidOperationException("Failed to deserialize NEP-6 wallet.");
+            }
+
+            return wallet;
         }
 
         /// <summary>
@@ -235,7 +244,7 @@ namespace NeoSharp.Wallet.NEP6
         /// <param name="password">The password for the default account.</param>
         /// <param name="scrypt">The scrypt parameters.</param>
         /// <returns>The created wallet.</returns>
-        public static NEP6Wallet Create(string path, string name, string password, ScryptParams scrypt = null)
+        public static NEP6Wallet Create(string path, string name, string password, ScryptParams? scrypt = null)
         {
             var wallet = new NEP6Wallet(name, scrypt);
             wallet.CreateAccount(password);

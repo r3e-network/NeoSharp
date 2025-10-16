@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using NeoSharp.Types;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -62,19 +64,19 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the next consensus address.
         /// </summary>
         [JsonPropertyName("nextconsensus")]
-        public string NextConsensus { get; set; }
+        public string NextConsensus { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the witnesses.
         /// </summary>
         [JsonPropertyName("witnesses")]
-        public List<NeoWitness> Witnesses { get; set; }
+        public List<NeoWitness> Witnesses { get; set; } = new();
 
         /// <summary>
         /// Gets or sets the transactions.
         /// </summary>
         [JsonPropertyName("tx")]
-        public List<Transaction> Transactions { get; set; }
+        public List<Transaction> Transactions { get; set; } = new();
 
         /// <summary>
         /// Gets or sets the confirmations.

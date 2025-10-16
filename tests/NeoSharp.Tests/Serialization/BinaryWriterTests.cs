@@ -184,7 +184,7 @@ namespace NeoSharp.Tests.Serialization
         public void WriteNullableBytes_ShouldHandleNullValues()
         {
             // Null array
-            _writer.WriteVarBytes(null);
+            _writer.WriteVarBytes(null!);
             TestAndReset(new byte[] { 0x00 });
 
             // Empty array

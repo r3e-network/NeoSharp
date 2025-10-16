@@ -5,6 +5,8 @@ using NeoSharp.Protocol.Core.Response;
 using NeoSharp.Types;
 using NeoSharp.Utils;
 
+#nullable enable
+
 namespace NeoSharp.Contract
 {
     /// <summary>

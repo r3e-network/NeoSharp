@@ -8,6 +8,8 @@ using NeoSharp.Serialization;
 using NeoSharp.Types;
 using NeoSharp.Utils;
 
+#nullable enable
+
 namespace NeoSharp.Script
 {
     /// <summary>
@@ -69,14 +71,16 @@ namespace NeoSharp.Script
         /// <returns>This ScriptBuilder instance</returns>
         public ScriptBuilder ContractCall(Hash160 scriptHash, string method, ContractParameter?[] parameters, CallFlags callFlags = CallFlags.All)
         {
-            if (scriptHash == null)
-                throw new ArgumentNullException(nameof(scriptHash));
+            if (scriptHash == default)
+                throw new ArgumentException("Script hash must be non-default", nameof(scriptHash));
             if (string.IsNullOrEmpty(method))
                 throw new ArgumentException("Method name cannot be null or empty", nameof(method));
 
             // Push parameters
-            if (parameters?.Length > 0)
+            if (parameters != null && parameters.Length > 0)
+            {
                 PushParameters(parameters);
+            }
             else
                 OpCode(Script.OpCode.NewArray0);
 
@@ -306,7 +310,7 @@ namespace NeoSharp.Script
         /// <returns>This ScriptBuilder instance</returns>
         public ScriptBuilder PushArray(ContractParameter[] parameters)
         {
-            if (parameters?.Length == 0)
+            if (parameters.Length == 0)
                 return OpCode(Script.OpCode.NewArray0);
                 
             return PushParameters(parameters);

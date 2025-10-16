@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -17,19 +19,19 @@ namespace NeoSharp.Protocol.Core.Response
             /// Gets or sets the list of unconnected peers.
             /// </summary>
             [JsonPropertyName("unconnected")]
-            public List<Peer> Unconnected { get; set; }
+            public List<Peer> Unconnected { get; set; } = new();
 
             /// <summary>
             /// Gets or sets the list of bad peers.
             /// </summary>
             [JsonPropertyName("bad")]
-            public List<Peer> Bad { get; set; }
+            public List<Peer> Bad { get; set; } = new();
 
             /// <summary>
             /// Gets or sets the list of connected peers.
             /// </summary>
             [JsonPropertyName("connected")]
-            public List<Peer> Connected { get; set; }
+            public List<Peer> Connected { get; set; } = new();
         }
 
         /// <summary>
@@ -41,7 +43,7 @@ namespace NeoSharp.Protocol.Core.Response
             /// Gets or sets the address.
             /// </summary>
             [JsonPropertyName("address")]
-            public string Address { get; set; }
+            public string Address { get; set; } = string.Empty;
 
             /// <summary>
             /// Gets or sets the port.

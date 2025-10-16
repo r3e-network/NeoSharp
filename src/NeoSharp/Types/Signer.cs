@@ -160,9 +160,9 @@ namespace NeoSharp.Types
         /// Converts the signer to JSON format for RPC calls.
         /// </summary>
         /// <returns>A dictionary representing the JSON format.</returns>
-        public Dictionary<string, object> ToJson()
+        public Dictionary<string, object?> ToJson()
         {
-            var json = new Dictionary<string, object>
+            var json = new Dictionary<string, object?>
             {
                 ["account"] = Account.ToString(),
                 ["scopes"] = Scopes.ToString()

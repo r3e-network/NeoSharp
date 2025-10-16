@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -23,19 +25,19 @@ namespace NeoSharp.Protocol.Core.Response
             /// Gets or sets the first proof.
             /// </summary>
             [JsonPropertyName("firstproof")]
-            public string FirstProof { get; set; }
+            public string FirstProof { get; set; } = string.Empty;
 
             /// <summary>
             /// Gets or sets the last proof.
             /// </summary>
             [JsonPropertyName("lastproof")]
-            public string LastProof { get; set; }
+            public string LastProof { get; set; } = string.Empty;
 
             /// <summary>
             /// Gets or sets the results.
             /// </summary>
             [JsonPropertyName("results")]
-            public List<StateResult> Results { get; set; }
+            public List<StateResult> Results { get; set; } = new();
         }
 
         /// <summary>
@@ -47,13 +49,13 @@ namespace NeoSharp.Protocol.Core.Response
             /// Gets or sets the key.
             /// </summary>
             [JsonPropertyName("key")]
-            public string Key { get; set; }
+            public string Key { get; set; } = string.Empty;
 
             /// <summary>
             /// Gets or sets the value.
             /// </summary>
             [JsonPropertyName("value")]
-            public string Value { get; set; }
+            public string Value { get; set; } = string.Empty;
         }
     }
 }

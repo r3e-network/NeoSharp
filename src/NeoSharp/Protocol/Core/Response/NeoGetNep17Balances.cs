@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -17,13 +19,13 @@ namespace NeoSharp.Protocol.Core.Response
             /// Gets or sets the balance list.
             /// </summary>
             [JsonPropertyName("balance")]
-            public List<Nep17Balance> Balance { get; set; }
+            public List<Nep17Balance> Balance { get; set; } = new();
 
             /// <summary>
             /// Gets or sets the address.
             /// </summary>
             [JsonPropertyName("address")]
-            public string Address { get; set; }
+            public string Address { get; set; } = string.Empty;
         }
 
         /// <summary>
@@ -35,31 +37,31 @@ namespace NeoSharp.Protocol.Core.Response
             /// Gets or sets the asset hash.
             /// </summary>
             [JsonPropertyName("assethash")]
-            public string AssetHash { get; set; }
+            public string AssetHash { get; set; } = string.Empty;
 
             /// <summary>
             /// Gets or sets the name.
             /// </summary>
             [JsonPropertyName("name")]
-            public string Name { get; set; }
+            public string Name { get; set; } = string.Empty;
 
             /// <summary>
             /// Gets or sets the symbol.
             /// </summary>
             [JsonPropertyName("symbol")]
-            public string Symbol { get; set; }
+            public string Symbol { get; set; } = string.Empty;
 
             /// <summary>
             /// Gets or sets the decimals.
             /// </summary>
             [JsonPropertyName("decimals")]
-            public string Decimals { get; set; }
+            public string Decimals { get; set; } = string.Empty;
 
             /// <summary>
             /// Gets or sets the amount.
             /// </summary>
             [JsonPropertyName("amount")]
-            public string Amount { get; set; }
+            public string Amount { get; set; } = string.Empty;
 
             /// <summary>
             /// Gets or sets the last updated block.

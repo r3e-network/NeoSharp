@@ -47,11 +47,13 @@ namespace NeoSharp.Tests.Crypto
             foreach (var jsonFormat in jsonFormats)
             {
                 var deserializedParams = JsonSerializer.Deserialize<ScryptParams>(jsonFormat);
-                
-                deserializedParams.Should().BeEquivalentTo(_testParams);
-                deserializedParams.N.Should().Be(8);
-                deserializedParams.R.Should().Be(4);
-                deserializedParams.P.Should().Be(9);
+                deserializedParams.Should().NotBeNull();
+
+                var actual = deserializedParams!;
+                actual.Should().BeEquivalentTo(_testParams);
+                actual.N.Should().Be(8);
+                actual.R.Should().Be(4);
+                actual.P.Should().Be(9);
             }
         }
 
@@ -110,7 +112,9 @@ namespace NeoSharp.Tests.Crypto
             var json = JsonSerializer.Serialize(originalParams);
             var deserializedParams = JsonSerializer.Deserialize<ScryptParams>(json);
 
-            deserializedParams.Should().BeEquivalentTo(originalParams);
+            deserializedParams.Should().NotBeNull();
+            var roundTripped = deserializedParams!;
+            roundTripped.Should().BeEquivalentTo(originalParams);
         }
 
         [Fact]
@@ -170,9 +174,11 @@ namespace NeoSharp.Tests.Crypto
             var deserializedParams = JsonSerializer.Deserialize<ScryptParams>(json, 
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             
-            deserializedParams.N.Should().Be(8);
-            deserializedParams.R.Should().Be(4);
-            deserializedParams.P.Should().Be(9);
+            deserializedParams.Should().NotBeNull();
+            var actual = deserializedParams!;
+            actual.N.Should().Be(8);
+            actual.R.Should().Be(4);
+            actual.P.Should().Be(9);
         }
 
         [Fact]

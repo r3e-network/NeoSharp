@@ -363,9 +363,9 @@ namespace NeoSharp.Types
         /// Converts the contract parameter to JSON format for RPC calls.
         /// </summary>
         /// <returns>A dictionary representing the JSON format.</returns>
-        public Dictionary<string, object> ToJson()
+        public Dictionary<string, object?> ToJson()
         {
-            var json = new Dictionary<string, object>
+            var json = new Dictionary<string, object?>
             {
                 ["type"] = Type.ToString()
             };
@@ -407,13 +407,13 @@ namespace NeoSharp.Types
                     }
                     else
                     {
-                        json["value"] = new List<object>();
+                        json["value"] = new List<object?>();
                     }
                     break;
                 case ContractParameterType.Map:
                     if (Value is IDictionary<ContractParameter, ContractParameter> map)
                     {
-                        json["value"] = map.Select(kvp => new Dictionary<string, object>
+                        json["value"] = map.Select(kvp => new Dictionary<string, object?>
                         {
                             ["key"] = kvp.Key.ToJson(),
                             ["value"] = kvp.Value.ToJson()

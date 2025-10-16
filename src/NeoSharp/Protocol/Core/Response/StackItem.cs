@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -13,31 +15,31 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the type of the stack item.
         /// </summary>
         [JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the value.
         /// </summary>
         [JsonPropertyName("value")]
-        public object Value { get; set; }
+        public object? Value { get; set; }
 
         /// <summary>
         /// Gets or sets the id (for iterators and other reference types).
         /// </summary>
         [JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         /// <summary>
         /// Gets or sets the interface (for interop interface types).
         /// </summary>
         [JsonPropertyName("interface")]
-        public string Interface { get; set; }
+        public string? Interface { get; set; }
 
         /// <summary>
         /// Gets or sets the iterator (for iterator types).
         /// </summary>
         [JsonPropertyName("iterator")]
-        public List<StackItem> Iterator { get; set; }
+        public List<StackItem>? Iterator { get; set; }
 
         /// <summary>
         /// Gets or sets the truncated flag (for large items).

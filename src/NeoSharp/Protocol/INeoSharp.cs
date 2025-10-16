@@ -166,32 +166,32 @@ namespace NeoSharp.Protocol
         /// <summary>
         /// Invokes a smart contract function without parameters.
         /// </summary>
-        Task<InvocationResult> InvokeFunctionAsync(Hash160 contractHash, string functionName, IList<Signer> signers = null, CancellationToken cancellationToken = default);
+        Task<InvocationResult> InvokeFunctionAsync(Hash160 contractHash, string functionName, IList<Signer>? signers = null, CancellationToken cancellationToken = default);
         
         /// <summary>
         /// Invokes a smart contract function with parameters.
         /// </summary>
-        Task<InvocationResult> InvokeFunctionAsync(Hash160 contractHash, string functionName, IList<ContractParameter> parameters, IList<Signer> signers = null, CancellationToken cancellationToken = default);
+        Task<InvocationResult> InvokeFunctionAsync(Hash160 contractHash, string functionName, IList<ContractParameter>? parameters, IList<Signer>? signers = null, CancellationToken cancellationToken = default);
         
         /// <summary>
         /// Invokes a smart contract function with diagnostics.
         /// </summary>
-        Task<InvocationResult> InvokeFunctionDiagnosticsAsync(Hash160 contractHash, string functionName, IList<Signer> signers = null, CancellationToken cancellationToken = default);
+        Task<InvocationResult> InvokeFunctionDiagnosticsAsync(Hash160 contractHash, string functionName, IList<Signer>? signers = null, CancellationToken cancellationToken = default);
         
         /// <summary>
         /// Invokes a smart contract function with parameters and diagnostics.
         /// </summary>
-        Task<InvocationResult> InvokeFunctionDiagnosticsAsync(Hash160 contractHash, string functionName, IList<ContractParameter> parameters, IList<Signer> signers = null, CancellationToken cancellationToken = default);
+        Task<InvocationResult> InvokeFunctionDiagnosticsAsync(Hash160 contractHash, string functionName, IList<ContractParameter>? parameters, IList<Signer>? signers = null, CancellationToken cancellationToken = default);
         
         /// <summary>
         /// Invokes a script given its hex representation.
         /// </summary>
-        Task<InvocationResult> InvokeScriptAsync(string scriptHex, IList<Signer> signers = null, CancellationToken cancellationToken = default);
+        Task<InvocationResult> InvokeScriptAsync(string scriptHex, IList<Signer>? signers = null, CancellationToken cancellationToken = default);
         
         /// <summary>
         /// Invokes a script with diagnostics.
         /// </summary>
-        Task<InvocationResult> InvokeScriptDiagnosticsAsync(string scriptHex, IList<Signer> signers = null, CancellationToken cancellationToken = default);
+        Task<InvocationResult> InvokeScriptDiagnosticsAsync(string scriptHex, IList<Signer>? signers = null, CancellationToken cancellationToken = default);
         
         /// <summary>
         /// Traverses an iterator.
@@ -206,7 +206,7 @@ namespace NeoSharp.Protocol
         /// <summary>
         /// Invokes a contract verification method.
         /// </summary>
-        Task<InvocationResult> InvokeContractVerifyAsync(Hash160 contractHash, IList<ContractParameter> methodParameters = null, IList<Signer> signers = null, CancellationToken cancellationToken = default);
+        Task<InvocationResult> InvokeContractVerifyAsync(Hash160 contractHash, IList<ContractParameter>? methodParameters = null, IList<Signer>? signers = null, CancellationToken cancellationToken = default);
         
         /// <summary>
         /// Gets the amount of unclaimed GAS for an address.
@@ -396,7 +396,7 @@ namespace NeoSharp.Protocol
         /// <summary>
         /// Finds states by prefix.
         /// </summary>
-        Task<NeoFindStates.States> FindStatesAsync(Hash256 rootHash, Hash160 contractHash, string keyPrefixHex, string startKeyHex = null, int? countFindResultItems = null, CancellationToken cancellationToken = default);
+        Task<NeoFindStates.States> FindStatesAsync(Hash256 rootHash, Hash160 contractHash, string keyPrefixHex, string? startKeyHex = null, int? countFindResultItems = null, CancellationToken cancellationToken = default);
         
         #endregion
     }

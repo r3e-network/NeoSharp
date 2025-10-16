@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -12,13 +14,13 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the hash.
         /// </summary>
         [JsonPropertyName("hash")]
-        public string Hash { get; set; }
+        public string Hash { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the method.
         /// </summary>
         [JsonPropertyName("method")]
-        public string Method { get; set; }
+        public string Method { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the parameter count.
@@ -36,6 +38,6 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the call flags.
         /// </summary>
         [JsonPropertyName("callflags")]
-        public string CallFlags { get; set; }
+        public string CallFlags { get; set; } = string.Empty;
     }
 }

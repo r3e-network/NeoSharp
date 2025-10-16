@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -11,7 +13,7 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the attribute type.
         /// </summary>
         [JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the allow multiple flag.
@@ -23,6 +25,6 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the value.
         /// </summary>
         [JsonPropertyName("value")]
-        public object Value { get; set; }
+        public object? Value { get; set; }
     }
 }

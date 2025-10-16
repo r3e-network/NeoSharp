@@ -2,6 +2,8 @@ using System;
 using System.Numerics;
 using NeoSharp.Utils;
 
+#nullable enable
+
 namespace NeoSharp.Crypto
 {
     /// <summary>

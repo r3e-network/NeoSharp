@@ -13,6 +13,8 @@ using NeoSharp.Utils;
 using NeoSharp.Types;
 using NeoSharp.Wallet;
 
+#nullable enable
+
 namespace NeoSharp.Contract
 {
     /// <summary>
@@ -140,8 +142,8 @@ namespace NeoSharp.Contract
         /// <returns>The amount of unclaimed GAS</returns>
         public async Task<long> GetUnclaimedGasAsync(Hash160 scriptHash, int blockHeight)
         {
-            if (scriptHash == null)
-                throw new ArgumentNullException(nameof(scriptHash));
+            if (scriptHash == default)
+                throw new ArgumentException("Script hash must be non-default", nameof(scriptHash));
 
             var result = await CallFunctionReturningIntAsync(UnclaimedGasMethod,
                 ContractParameter.Hash160(scriptHash),
@@ -207,7 +209,7 @@ namespace NeoSharp.Contract
             var invocationResult = result.GetResult();
             ThrowIfFaultState(invocationResult);
             
-            var arrayItem = invocationResult.GetFirstStackItem();
+            var arrayItem = invocationResult.GetFirstStackItem() ?? throw new InvalidOperationException("Contract call did not return any stack items.");
             if (!arrayItem.IsArray)
                 throw ContractException.UnexpectedReturnType(arrayItem.Type, "Array");
 
@@ -301,7 +303,7 @@ namespace NeoSharp.Contract
             var invocationResult = result.GetResult();
             ThrowIfFaultState(invocationResult);
             
-            var arrayItem = invocationResult.GetFirstStackItem();
+            var arrayItem = invocationResult.GetFirstStackItem() ?? throw new InvalidOperationException("Contract call did not return any stack items.");
             if (!arrayItem.IsArray)
                 throw ContractException.UnexpectedReturnType(arrayItem.Type, "Array");
 
@@ -365,8 +367,8 @@ namespace NeoSharp.Contract
         /// <returns>A transaction builder</returns>
         public async Task<TransactionBuilder> VoteAsync(Hash160 voter, ECPublicKey? candidate)
         {
-            if (voter == null)
-                throw new ArgumentNullException(nameof(voter));
+            if (voter == default)
+                throw new ArgumentException("Voter script hash must be non-default", nameof(voter));
 
             await Task.CompletedTask; // For async consistency
 
@@ -405,6 +407,8 @@ namespace NeoSharp.Contract
         /// <returns>A transaction builder</returns>
         public async Task<TransactionBuilder> CancelVoteAsync(Hash160 voter)
         {
+            if (voter == default)
+                throw new ArgumentException("Voter script hash must be non-default", nameof(voter));
             return await VoteAsync(voter, null);
         }
 
@@ -416,8 +420,8 @@ namespace NeoSharp.Contract
         /// <returns>The voting script</returns>
         public byte[] BuildVoteScript(Hash160 voter, ECPublicKey? candidate)
         {
-            if (voter == null)
-                throw new ArgumentNullException(nameof(voter));
+            if (voter == default)
+                throw new ArgumentException("Voter script hash must be non-default", nameof(voter));
 
             if (candidate == null)
             {
@@ -484,8 +488,8 @@ namespace NeoSharp.Contract
         /// <returns>The account state</returns>
         public async Task<Protocol.Models.NeoAccountState> GetAccountStateAsync(Hash160 accountHash)
         {
-            if (accountHash == null)
-                throw new ArgumentNullException(nameof(accountHash));
+            if (accountHash == default)
+                throw new ArgumentException("Account script hash must be non-default", nameof(accountHash));
 
             var result = await CallInvokeFunctionAsync(GetAccountStateMethod,
                 new[] { ContractParameter.Hash160(accountHash) });
@@ -493,7 +497,7 @@ namespace NeoSharp.Contract
             var invocationResult = result.GetResult();
             ThrowIfFaultState(invocationResult);
 
-            var stackItem = invocationResult.Stack.FirstOrDefault();
+            var stackItem = invocationResult.GetFirstStackItem();
             if (stackItem == null)
                 throw new NeoSharpException("Account State stack was empty");
 
@@ -501,8 +505,8 @@ namespace NeoSharp.Contract
             if (stackItem.IsAny)
                 return Protocol.Models.NeoAccountState.WithNoBalance(Hash160.Zero);
 
-            var stateList = stackItem.GetList();
-            if (stateList == null || stateList.Count() < 3)
+            var stateList = stackItem.GetList()?.ToList();
+            if (stateList == null || stateList.Count < 3)
                 throw new NeoSharpException("Account State stack was malformed");
 
             var balance = stateList[0].GetInteger();

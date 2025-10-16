@@ -1,6 +1,8 @@
 using System.Text.Json.Serialization;
 using NeoSharp.Types;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -12,18 +14,18 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the token hash.
         /// </summary>
         [JsonPropertyName("asset")]
-        public Hash160 Asset { get; set; }
+        public Hash160 Asset { get; set; } = Hash160.Zero;
 
         /// <summary>
         /// Gets or sets the value.
         /// </summary>
         [JsonPropertyName("value")]
-        public string Value { get; set; }
+        public string Value { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the address.
         /// </summary>
         [JsonPropertyName("address")]
-        public string Address { get; set; }
+        public string Address { get; set; } = string.Empty;
     }
 }

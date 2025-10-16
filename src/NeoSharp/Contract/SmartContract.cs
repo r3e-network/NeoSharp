@@ -11,6 +11,8 @@ using NeoSharp.Types;
 using NeoSharp.Transaction;
 using NeoSharp.Utils;
 
+#nullable enable
+
 namespace NeoSharp.Contract
 {
     /// <summary>
@@ -93,7 +95,7 @@ namespace NeoSharp.Contract
             var invocationResult = result.GetResult();
             ThrowIfFaultState(invocationResult);
             
-            var stackItem = invocationResult.GetFirstStackItem();
+            var stackItem = invocationResult.GetFirstStackItem() ?? throw new InvalidOperationException("Contract call did not return any stack items.");
             if (!stackItem.IsByteString)
                 throw ContractException.UnexpectedReturnType(stackItem.Type, "ByteString");
 
@@ -112,7 +114,7 @@ namespace NeoSharp.Contract
             var invocationResult = result.GetResult();
             ThrowIfFaultState(invocationResult);
             
-            var stackItem = invocationResult.GetFirstStackItem();
+            var stackItem = invocationResult.GetFirstStackItem() ?? throw new InvalidOperationException("Contract call did not return any stack items.");
             if (!stackItem.IsInteger)
                 throw ContractException.UnexpectedReturnType(stackItem.Type, "Integer");
 
@@ -131,7 +133,7 @@ namespace NeoSharp.Contract
             var invocationResult = result.GetResult();
             ThrowIfFaultState(invocationResult);
             
-            var stackItem = invocationResult.GetFirstStackItem();
+            var stackItem = invocationResult.GetFirstStackItem() ?? throw new InvalidOperationException("Contract call did not return any stack items.");
             return stackItem switch
             {
                 _ when stackItem.IsBoolean => stackItem.GetBoolean(),
@@ -153,8 +155,9 @@ namespace NeoSharp.Contract
             var result = await CallInvokeFunctionAsync(function, parameters);
             var invocationResult = result.GetResult();
             ThrowIfFaultState(invocationResult);
-            
-            return ExtractScriptHash(invocationResult.Stack.First());
+
+            var stackItem = invocationResult.GetFirstStackItem() ?? throw new InvalidOperationException("Contract call did not return any stack items.");
+            return ExtractScriptHash(stackItem);
         }
 
         /// <summary>
@@ -199,7 +202,7 @@ namespace NeoSharp.Contract
             var invocationResult = result.GetResult();
             ThrowIfFaultState(invocationResult);
             
-            var stackItem = invocationResult.GetFirstStackItem();
+            var stackItem = invocationResult.GetFirstStackItem() ?? throw new InvalidOperationException("Contract call did not return any stack items.");
             if (!stackItem.IsInteropInterface())
                 throw ContractException.UnexpectedReturnType(stackItem.Type, "InteropInterface");
 
@@ -256,7 +259,14 @@ namespace NeoSharp.Contract
             var invocationResult = result.GetResult();
             ThrowIfFaultState(invocationResult);
             
-            return invocationResult.Stack.FirstOrDefault()?.GetList() ?? new List<StackItem>();
+            var stackItem = invocationResult.GetFirstStackItem();
+            if (stackItem == null)
+            {
+                return new List<StackItem>();
+            }
+
+            var list = stackItem.GetList();
+            return list?.ToList() ?? new List<StackItem>();
         }
 
         /// <summary>

@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -11,7 +13,7 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the address.
         /// </summary>
         [JsonPropertyName("address")]
-        public string Address { get; set; }
+        public string Address { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets whether it has a key.
@@ -23,7 +25,7 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the label.
         /// </summary>
         [JsonPropertyName("label")]
-        public string Label { get; set; }
+        public string Label { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets whether it is a watch-only address.

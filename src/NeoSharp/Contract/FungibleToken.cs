@@ -7,6 +7,8 @@ using NeoSharp.Transaction;
 using NeoSharp.Types;
 using NeoSharp.Wallet;
 
+#nullable enable
+
 namespace NeoSharp.Contract
 {
     /// <summary>
@@ -53,8 +55,8 @@ namespace NeoSharp.Contract
         /// <returns>The token balance in fractions</returns>
         public virtual async Task<long> GetBalanceOfAsync(Hash160 scriptHash)
         {
-            if (scriptHash == null)
-                throw new ArgumentNullException(nameof(scriptHash));
+            if (scriptHash == default)
+                throw new ArgumentException("Script hash must be non-default", nameof(scriptHash));
 
             var balance = await CallFunctionReturningIntAsync(BalanceOfMethod, ContractParameter.Hash160(scriptHash));
             return balance;
@@ -114,10 +116,10 @@ namespace NeoSharp.Contract
         /// <returns>A transaction builder ready for signing</returns>
         public virtual TransactionBuilder Transfer(Hash160 from, Hash160 to, long amount, ContractParameter? data = null)
         {
-            if (from == null)
-                throw new ArgumentNullException(nameof(from));
-            if (to == null)
-                throw new ArgumentNullException(nameof(to));
+            if (from == default)
+                throw new ArgumentException("Sender script hash must be non-default", nameof(from));
+            if (to == default)
+                throw new ArgumentException("Recipient script hash must be non-default", nameof(to));
             if (amount < 0)
                 throw new ArgumentException("The amount must be greater than or equal to 0", nameof(amount));
 
@@ -135,10 +137,10 @@ namespace NeoSharp.Contract
         /// <returns>The transfer script</returns>
         public virtual byte[] BuildTransferScript(Hash160 from, Hash160 to, long amount, ContractParameter? data = null)
         {
-            if (from == null)
-                throw new ArgumentNullException(nameof(from));
-            if (to == null)
-                throw new ArgumentNullException(nameof(to));
+            if (from == default)
+                throw new ArgumentException("Sender script hash must be non-default", nameof(from));
+            if (to == default)
+                throw new ArgumentException("Recipient script hash must be non-default", nameof(to));
 
             var parameters = new ContractParameter[]
             {
@@ -185,8 +187,8 @@ namespace NeoSharp.Contract
         /// <returns>A transaction builder ready for signing</returns>
         public virtual async Task<TransactionBuilder> TransferAsync(Hash160 from, NnsName to, long amount, ContractParameter? data = null)
         {
-            if (from == null)
-                throw new ArgumentNullException(nameof(from));
+            if (from == default)
+                throw new ArgumentException("Sender script hash must be non-default", nameof(from));
             if (to == null)
                 throw new ArgumentNullException(nameof(to));
 

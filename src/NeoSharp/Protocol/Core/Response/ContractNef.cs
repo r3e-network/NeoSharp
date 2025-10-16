@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -18,25 +20,25 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the compiler information.
         /// </summary>
         [JsonPropertyName("compiler")]
-        public string Compiler { get; set; }
+        public string Compiler { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the source URL.
         /// </summary>
         [JsonPropertyName("source")]
-        public string Source { get; set; }
+        public string Source { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the tokens.
         /// </summary>
         [JsonPropertyName("tokens")]
-        public List<ContractMethodToken> Tokens { get; set; }
+        public List<ContractMethodToken> Tokens { get; set; } = new();
 
         /// <summary>
         /// Gets or sets the script.
         /// </summary>
         [JsonPropertyName("script")]
-        public string Script { get; set; }
+        public string Script { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the checksum.

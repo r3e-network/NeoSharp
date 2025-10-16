@@ -71,7 +71,9 @@ namespace NeoSharp.Tests.Crypto
         {
             // Arrange
             var base58Bytes = NeoSharp.Crypto.Base58.Decode(ValidWif);
-            base58Bytes[0] = 0x81; // Change first byte from 0x80 to 0x81
+            base58Bytes.Should().NotBeNull();
+
+            base58Bytes![0] = 0x81; // Change first byte from 0x80 to 0x81
             var wrongFirstByteWif = NeoSharp.Crypto.Base58.Encode(base58Bytes);
 
             // Act & Assert
@@ -85,7 +87,9 @@ namespace NeoSharp.Tests.Crypto
         {
             // Arrange
             var base58Bytes = NeoSharp.Crypto.Base58.Decode(ValidWif);
-            base58Bytes[33] = 0x00; // Change compressed flag from 0x01 to 0x00
+            base58Bytes.Should().NotBeNull();
+
+            base58Bytes![33] = 0x00; // Change compressed flag from 0x01 to 0x00
             var wrongByte33Wif = NeoSharp.Crypto.Base58.Encode(base58Bytes);
 
             // Act & Assert
@@ -99,7 +103,9 @@ namespace NeoSharp.Tests.Crypto
         {
             // Arrange
             var base58Bytes = NeoSharp.Crypto.Base58.Decode(ValidWif);
-            base58Bytes[^1] = (byte)(base58Bytes[^1] ^ 0xFF); // Corrupt checksum
+            base58Bytes.Should().NotBeNull();
+
+            base58Bytes![^1] = (byte)(base58Bytes[^1] ^ 0xFF); // Corrupt checksum
             var invalidChecksumWif = NeoSharp.Crypto.Base58.Encode(base58Bytes);
 
             // Act & Assert
@@ -112,7 +118,7 @@ namespace NeoSharp.Tests.Crypto
         public void NullPrivateKey_ShouldThrowArgumentNullException()
         {
             // Act & Assert
-            Action act = () => WIF.Encode(null);
+            Action act = () => WIF.Encode(null!);
             act.Should().Throw<ArgumentNullException>()
                 .WithParameterName("privateKey");
         }
@@ -135,7 +141,7 @@ namespace NeoSharp.Tests.Crypto
         public void NullWifString_ShouldThrowArgumentNullException()
         {
             // Act & Assert
-            Action act = () => WIF.Decode(null);
+            Action act = () => WIF.Decode(null!);
             act.Should().Throw<ArgumentNullException>()
                 .WithParameterName("wifString");
         }

@@ -1,6 +1,9 @@
 using System;
 using System.Runtime.Serialization;
 
+#nullable enable
+#pragma warning disable SYSLIB0051
+
 namespace NeoSharp.Crypto
 {
     /// <summary>
@@ -82,7 +85,7 @@ namespace NeoSharp.Crypto
         /// </summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="innerException">The exception that is the cause of the current exception.</param>
-        public CryptoSecurityException(string message, Exception innerException) : base(message, innerException)
+        public CryptoSecurityException(string message, Exception? innerException) : base(message, innerException)
         {
             ErrorCode = "SECURITY_INNER_EXCEPTION";
             Level = SecurityLevel.Medium;
@@ -95,7 +98,7 @@ namespace NeoSharp.Crypto
         /// <param name="errorCode">A specific error code for this security operation.</param>
         /// <param name="level">The security level of this exception.</param>
         /// <param name="innerException">The exception that is the cause of the current exception.</param>
-        public CryptoSecurityException(string message, string errorCode, SecurityLevel level, Exception innerException) : base(message, innerException)
+        public CryptoSecurityException(string message, string errorCode, SecurityLevel level, Exception? innerException) : base(message, innerException)
         {
             ErrorCode = errorCode ?? "SECURITY_INNER_EXCEPTION";
             Level = level;
@@ -108,8 +111,13 @@ namespace NeoSharp.Crypto
         /// <param name="context">The StreamingContext that contains contextual information about the source or destination.</param>
         protected CryptoSecurityException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
-            ErrorCode = info?.GetString(nameof(ErrorCode)) ?? "SECURITY_DESERIALIZED";
-            if (Enum.TryParse<SecurityLevel>(info?.GetString(nameof(Level)) ?? "Medium", out var level))
+            if (info == null)
+            {
+                throw new ArgumentNullException(nameof(info));
+            }
+
+            ErrorCode = info.GetString(nameof(ErrorCode)) ?? "SECURITY_DESERIALIZED";
+            if (Enum.TryParse<SecurityLevel>(info.GetString(nameof(Level)) ?? "Medium", out var level))
             {
                 Level = level;
             }
@@ -124,13 +132,16 @@ namespace NeoSharp.Crypto
         /// </summary>
         /// <param name="info">The SerializationInfo that holds the serialized object data about the exception being thrown.</param>
         /// <param name="context">The StreamingContext that contains contextual information about the source or destination.</param>
+        [Obsolete("Binary serialization is obsolete and will be removed in a future release.")]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            if (info != null)
+            if (info == null)
             {
-                info.AddValue(nameof(ErrorCode), ErrorCode);
-                info.AddValue(nameof(Level), Level.ToString());
+                throw new ArgumentNullException(nameof(info));
             }
+
+            info.AddValue(nameof(ErrorCode), ErrorCode);
+            info.AddValue(nameof(Level), Level.ToString());
             base.GetObjectData(info, context);
         }
 
@@ -140,7 +151,7 @@ namespace NeoSharp.Crypto
         /// <param name="message">The specific memory error message.</param>
         /// <param name="innerException">The underlying system exception.</param>
         /// <returns>A new CryptoSecurityException with appropriate error code and high security level.</returns>
-        public static CryptoSecurityException SecureMemoryError(string message, Exception innerException = null)
+        public static CryptoSecurityException SecureMemoryError(string message, Exception? innerException = null)
         {
             return new CryptoSecurityException($"Secure memory operation failed: {message}", "SECURITY_MEMORY_ERROR", SecurityLevel.High, innerException);
         }
@@ -151,7 +162,7 @@ namespace NeoSharp.Crypto
         /// <param name="message">The specific key generation error message.</param>
         /// <param name="innerException">The underlying cryptographic exception.</param>
         /// <returns>A new CryptoSecurityException with appropriate error code and critical security level.</returns>
-        public static CryptoSecurityException KeyGenerationError(string message, Exception innerException = null)
+        public static CryptoSecurityException KeyGenerationError(string message, Exception? innerException = null)
         {
             return new CryptoSecurityException($"Key generation failed: {message}", "SECURITY_KEY_GENERATION_ERROR", SecurityLevel.Critical, innerException);
         }
@@ -187,3 +198,5 @@ namespace NeoSharp.Crypto
         }
     }
 }
+
+#pragma warning restore SYSLIB0051

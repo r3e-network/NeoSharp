@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using NeoSharp.Types;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -36,7 +38,7 @@ namespace NeoSharp.Protocol.Core.Response
             /// Gets or sets the witnesses.
             /// </summary>
             [JsonPropertyName("witnesses")]
-            public List<NeoWitness> Witnesses { get; set; }
+            public List<NeoWitness> Witnesses { get; set; } = new();
         }
     }
 }

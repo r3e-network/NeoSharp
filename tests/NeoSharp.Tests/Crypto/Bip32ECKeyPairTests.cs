@@ -141,6 +141,7 @@ namespace NeoSharp.Tests.Crypto
         public void TestMasterKeyGeneration(string seedHex, uint[] path)
         {
             var seedBytes = HexExtensions.HexToBytes(seedHex);
+            path.Should().NotBeNull();
             
             Action act = () =>
             {

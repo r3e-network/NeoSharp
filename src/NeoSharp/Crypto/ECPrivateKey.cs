@@ -158,6 +158,9 @@ namespace NeoSharp.Crypto
                 throw new ArgumentException("WIF cannot be empty", nameof(wif));
             
             var data = Base58.Decode(wif);
+            if (data == null)
+                throw new FormatException("Invalid WIF encoding");
+
             if (data.Length != 38 && data.Length != 37)
                 throw new FormatException("Invalid WIF length");
             

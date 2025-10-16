@@ -13,7 +13,7 @@ namespace NeoSharp.Transaction
         /// <summary>
         /// The account to use for signing
         /// </summary>
-        public Account Account { get; }
+        public new Account Account { get; }
 
         /// <summary>
         /// Initializes a new AccountSigner

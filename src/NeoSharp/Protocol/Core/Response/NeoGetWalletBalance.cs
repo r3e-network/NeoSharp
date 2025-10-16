@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -16,7 +18,7 @@ namespace NeoSharp.Protocol.Core.Response
             /// Gets or sets the balance amount.
             /// </summary>
             [JsonPropertyName("balance")]
-            public string BalanceAmount { get; set; }
+            public string BalanceAmount { get; set; } = string.Empty;
         }
     }
 }

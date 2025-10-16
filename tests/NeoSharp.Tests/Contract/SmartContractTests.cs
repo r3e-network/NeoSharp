@@ -120,7 +120,7 @@ namespace NeoSharp.Tests.Contract
         public void BuildInvokeFunctionScript_WithNullParameters_ShouldWork()
         {
             // Act
-            var script = _neoContract.BuildInvokeFunctionScript(Nep17Name, null);
+            var script = _neoContract.BuildInvokeFunctionScript(Nep17Name, null!);
 
             // Assert
             script.Should().NotBeEmpty();
@@ -139,7 +139,7 @@ namespace NeoSharp.Tests.Contract
         public void InvokeFunction_WithNullParameters_ShouldWork()
         {
             // Act
-            var builder = _neoContract.InvokeFunction(Nep17Name, null);
+            var builder = _neoContract.InvokeFunction(Nep17Name, null!);
 
             // Assert
             builder.Should().NotBeNull();

@@ -111,13 +111,15 @@ namespace NeoSharp.Tests.Types
             param.Value.Should().BeOfType<ContractParameter[]>();
             
             var array = param.Value as ContractParameter[];
-            array.Should().HaveCount(3);
-            array[0].Type.Should().Be(ContractParameterType.Integer);
-            array[0].Value.Should().Be(42);
-            array[1].Type.Should().Be(ContractParameterType.String);
-            array[1].Value.Should().Be("test");
-            array[2].Type.Should().Be(ContractParameterType.Boolean);
-            array[2].Value.Should().Be(true);
+            array.Should().NotBeNull();
+            var actualArray = array!;
+            actualArray.Should().HaveCount(3);
+            actualArray[0].Type.Should().Be(ContractParameterType.Integer);
+            actualArray[0].Value.Should().Be(42);
+            actualArray[1].Type.Should().Be(ContractParameterType.String);
+            actualArray[1].Value.Should().Be("test");
+            actualArray[2].Type.Should().Be(ContractParameterType.Boolean);
+            actualArray[2].Value.Should().Be(true);
         }
 
         [Fact]
@@ -237,16 +239,18 @@ namespace NeoSharp.Tests.Types
 
             // Assert
             json["type"].Should().Be("Array");
-            json["value"].Should().BeOfType<List<Dictionary<string, object>>>();
+            json["value"].Should().BeOfType<List<Dictionary<string, object?>>>();
             
-            var array = json["value"] as List<Dictionary<string, object>>;
-            array.Should().HaveCount(3);
-            array[0]["type"].Should().Be("Integer");
-            array[0]["value"].Should().Be("1");
-            array[1]["type"].Should().Be("String");
-            array[1]["value"].Should().Be("test");
-            array[2]["type"].Should().Be("Boolean");
-            array[2]["value"].Should().Be(true);
+            var array = json["value"] as List<Dictionary<string, object?>>;
+            array.Should().NotBeNull();
+            var actualArray = array!;
+            actualArray.Should().HaveCount(3);
+            actualArray[0]["type"].Should().Be("Integer");
+            actualArray[0]["value"].Should().Be("1");
+            actualArray[1]["type"].Should().Be("String");
+            actualArray[1]["value"].Should().Be("test");
+            actualArray[2]["type"].Should().Be("Boolean");
+            actualArray[2]["value"].Should().Be(true);
         }
 
         [Fact]

@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -16,13 +18,13 @@ namespace NeoSharp.Protocol.Core.Response
             /// Gets or sets the unclaimed amount.
             /// </summary>
             [JsonPropertyName("unclaimed")]
-            public string Unclaimed { get; set; }
+            public string Unclaimed { get; set; } = string.Empty;
 
             /// <summary>
             /// Gets or sets the address.
             /// </summary>
             [JsonPropertyName("address")]
-            public string Address { get; set; }
+            public string Address { get; set; } = string.Empty;
         }
     }
 }

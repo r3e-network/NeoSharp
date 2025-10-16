@@ -2,6 +2,8 @@ using System;
 using System.ComponentModel;
 using NeoSharp.Utils;
 
+#nullable enable
+
 namespace NeoSharp.Script
 {
     /// <summary>

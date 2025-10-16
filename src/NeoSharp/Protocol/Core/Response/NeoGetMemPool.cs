@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using NeoSharp.Types;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -24,13 +26,13 @@ namespace NeoSharp.Protocol.Core.Response
             /// Gets or sets the list of verified transactions.
             /// </summary>
             [JsonPropertyName("verified")]
-            public List<Hash256> Verified { get; set; }
+            public List<Hash256> Verified { get; set; } = new();
 
             /// <summary>
             /// Gets or sets the list of unverified transactions.
             /// </summary>
             [JsonPropertyName("unverified")]
-            public List<Hash256> Unverified { get; set; }
+            public List<Hash256> Unverified { get; set; } = new();
         }
     }
 }

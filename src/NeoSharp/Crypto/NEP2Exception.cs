@@ -1,6 +1,9 @@
 using System;
 using System.Runtime.Serialization;
 
+#nullable enable
+#pragma warning disable SYSLIB0051
+
 namespace NeoSharp.Crypto
 {
     /// <summary>
@@ -47,7 +50,7 @@ namespace NeoSharp.Crypto
         /// </summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="innerException">The exception that is the cause of the current exception.</param>
-        public NEP2Exception(string message, Exception innerException) : base(message, innerException)
+        public NEP2Exception(string message, Exception? innerException) : base(message, innerException)
         {
             ErrorCode = "NEP2_INNER_EXCEPTION";
         }
@@ -58,7 +61,7 @@ namespace NeoSharp.Crypto
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="errorCode">A specific error code for this NEP-2 operation.</param>
         /// <param name="innerException">The exception that is the cause of the current exception.</param>
-        public NEP2Exception(string message, string errorCode, Exception innerException) : base(message, innerException)
+        public NEP2Exception(string message, string errorCode, Exception? innerException) : base(message, innerException)
         {
             ErrorCode = errorCode ?? "NEP2_INNER_EXCEPTION";
         }
@@ -70,7 +73,12 @@ namespace NeoSharp.Crypto
         /// <param name="context">The StreamingContext that contains contextual information about the source or destination.</param>
         protected NEP2Exception(SerializationInfo info, StreamingContext context) : base(info, context)
         {
-            ErrorCode = info?.GetString(nameof(ErrorCode)) ?? "NEP2_DESERIALIZED";
+            if (info == null)
+            {
+                throw new ArgumentNullException(nameof(info));
+            }
+
+            ErrorCode = info.GetString(nameof(ErrorCode)) ?? "NEP2_DESERIALIZED";
         }
 
         /// <summary>
@@ -78,12 +86,15 @@ namespace NeoSharp.Crypto
         /// </summary>
         /// <param name="info">The SerializationInfo that holds the serialized object data about the exception being thrown.</param>
         /// <param name="context">The StreamingContext that contains contextual information about the source or destination.</param>
+        [Obsolete("Binary serialization is obsolete and will be removed in a future release.")]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            if (info != null)
+            if (info == null)
             {
-                info.AddValue(nameof(ErrorCode), ErrorCode);
+                throw new ArgumentNullException(nameof(info));
             }
+
+            info.AddValue(nameof(ErrorCode), ErrorCode);
             base.GetObjectData(info, context);
         }
 
@@ -113,9 +124,11 @@ namespace NeoSharp.Crypto
         /// <param name="message">The specific encryption error message.</param>
         /// <param name="innerException">The underlying cryptographic exception.</param>
         /// <returns>A new NEP2Exception with appropriate error code.</returns>
-        public static NEP2Exception EncryptionError(string message, Exception innerException = null)
+        public static NEP2Exception EncryptionError(string message, Exception? innerException = null)
         {
             return new NEP2Exception($"NEP-2 encryption error: {message}", "NEP2_ENCRYPTION_ERROR", innerException);
         }
     }
 }
+
+#pragma warning restore SYSLIB0051

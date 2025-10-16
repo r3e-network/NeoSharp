@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -12,31 +14,31 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the account script hash.
         /// </summary>
         [JsonPropertyName("account")]
-        public string Account { get; set; }
+        public string Account { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the witness scopes.
         /// </summary>
         [JsonPropertyName("scopes")]
-        public string Scopes { get; set; }
+        public string Scopes { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the allowed contracts.
         /// </summary>
         [JsonPropertyName("allowedcontracts")]
-        public List<string> AllowedContracts { get; set; }
+        public List<string> AllowedContracts { get; set; } = new();
 
         /// <summary>
         /// Gets or sets the allowed groups.
         /// </summary>
         [JsonPropertyName("allowedgroups")]
-        public List<string> AllowedGroups { get; set; }
+        public List<string> AllowedGroups { get; set; } = new();
 
         /// <summary>
         /// Gets or sets the witness rules.
         /// </summary>
         [JsonPropertyName("rules")]
-        public List<WitnessRule> Rules { get; set; }
+        public List<WitnessRule> Rules { get; set; } = new();
     }
 
     /// <summary>
@@ -48,13 +50,13 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the action.
         /// </summary>
         [JsonPropertyName("action")]
-        public string Action { get; set; }
+        public string Action { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the condition.
         /// </summary>
         [JsonPropertyName("condition")]
-        public WitnessCondition Condition { get; set; }
+        public WitnessCondition Condition { get; set; } = new();
     }
 
     /// <summary>
@@ -66,24 +68,24 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the type.
         /// </summary>
         [JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string Type { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the expression list.
         /// </summary>
         [JsonPropertyName("expressions")]
-        public List<WitnessCondition> Expressions { get; set; }
+        public List<WitnessCondition> Expressions { get; set; } = new();
 
         /// <summary>
         /// Gets or sets the hash value.
         /// </summary>
         [JsonPropertyName("hash")]
-        public string Hash { get; set; }
+        public string Hash { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the group value.
         /// </summary>
         [JsonPropertyName("group")]
-        public string Group { get; set; }
+        public string Group { get; set; } = string.Empty;
     }
 }

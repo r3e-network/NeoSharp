@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using NeoSharp.Types;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -25,13 +27,13 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the NEF (Neo Executable Format) data.
         /// </summary>
         [JsonPropertyName("nef")]
-        public ContractNef Nef { get; set; }
+        public ContractNef Nef { get; set; } = new ContractNef();
 
         /// <summary>
         /// Gets or sets the contract manifest.
         /// </summary>
         [JsonPropertyName("manifest")]
-        public ContractManifest Manifest { get; set; }
+        public ContractManifest Manifest { get; set; } = new ContractManifest();
 
         /// <summary>
         /// Gets or sets the update counter.

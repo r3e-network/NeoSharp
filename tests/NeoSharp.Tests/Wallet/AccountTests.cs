@@ -62,7 +62,7 @@ namespace NeoSharp.Tests.Wallet
 
             // Assert
             account.Address.Should().NotBeNullOrEmpty();
-            account.VerificationScript.Script.Should().BeEquivalentTo(scriptBytes);
+            account.VerificationScript!.Script.Should().BeEquivalentTo(scriptBytes);
         }
 
         [Fact]
@@ -124,7 +124,7 @@ namespace NeoSharp.Tests.Wallet
             // Assert
             account.Should().NotBeNull();
             account.Address.Should().NotBeNullOrEmpty();
-            account.KeyPair.PrivateKeyBytes.Should().BeEquivalentTo(privateKeyBytes);
+            account.KeyPair!.PrivateKeyBytes.Should().BeEquivalentTo(privateKeyBytes);
         }
 
         [Fact]
@@ -286,7 +286,7 @@ namespace NeoSharp.Tests.Wallet
         public void CreateMultiSigAccount_WithNullPublicKeys_ShouldThrowArgumentNullException()
         {
             // Act & Assert
-            Action act = () => Account.CreateMultiSigAccount(null, 1);
+            Action act = () => Account.CreateMultiSigAccount(null!, 1);
             act.Should().Throw<ArgumentNullException>()
                 .WithParameterName("publicKeys");
         }
@@ -304,7 +304,7 @@ namespace NeoSharp.Tests.Wallet
         public void Constructor_WithNullKeyPair_ShouldThrowArgumentNullException()
         {
             // Act & Assert
-            Action act = () => new Account((ECKeyPair)null);
+            Action act = () => new Account((ECKeyPair)null!);
             act.Should().Throw<ArgumentNullException>()
                 .WithParameterName("keyPair");
         }

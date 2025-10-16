@@ -3,6 +3,8 @@ using System.Numerics;
 using NeoSharp.Types;
 using NeoSharp.Utils;
 
+#nullable enable
+
 namespace NeoSharp.Crypto
 {
     /// <summary>

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -17,19 +19,19 @@ namespace NeoSharp.Protocol.Core.Response
             /// Gets or sets the plugin name.
             /// </summary>
             [JsonPropertyName("name")]
-            public string Name { get; set; }
+            public string Name { get; set; } = string.Empty;
 
             /// <summary>
             /// Gets or sets the version.
             /// </summary>
             [JsonPropertyName("version")]
-            public string Version { get; set; }
+            public string Version { get; set; } = string.Empty;
 
             /// <summary>
             /// Gets or sets the interfaces.
             /// </summary>
             [JsonPropertyName("interfaces")]
-            public List<string> Interfaces { get; set; }
+            public List<string> Interfaces { get; set; } = new();
         }
     }
 }

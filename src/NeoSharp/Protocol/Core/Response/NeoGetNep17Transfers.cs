@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using NeoSharp.Types;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -18,19 +20,19 @@ namespace NeoSharp.Protocol.Core.Response
             /// Gets or sets the sent transfers.
             /// </summary>
             [JsonPropertyName("sent")]
-            public List<Nep17Transfer> Sent { get; set; }
+            public List<Nep17Transfer> Sent { get; set; } = new();
 
             /// <summary>
             /// Gets or sets the received transfers.
             /// </summary>
             [JsonPropertyName("received")]
-            public List<Nep17Transfer> Received { get; set; }
+            public List<Nep17Transfer> Received { get; set; } = new();
 
             /// <summary>
             /// Gets or sets the address.
             /// </summary>
             [JsonPropertyName("address")]
-            public string Address { get; set; }
+            public string Address { get; set; } = string.Empty;
         }
 
         /// <summary>
@@ -54,13 +56,13 @@ namespace NeoSharp.Protocol.Core.Response
             /// Gets or sets the transfer address.
             /// </summary>
             [JsonPropertyName("transferaddress")]
-            public string TransferAddress { get; set; }
+            public string TransferAddress { get; set; } = string.Empty;
 
             /// <summary>
             /// Gets or sets the amount.
             /// </summary>
             [JsonPropertyName("amount")]
-            public string Amount { get; set; }
+            public string Amount { get; set; } = string.Empty;
 
             /// <summary>
             /// Gets or sets the block index.

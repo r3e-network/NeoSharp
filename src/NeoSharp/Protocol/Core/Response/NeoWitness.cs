@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -11,12 +13,12 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the invocation script.
         /// </summary>
         [JsonPropertyName("invocation")]
-        public string Invocation { get; set; }
+        public string Invocation { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the verification script.
         /// </summary>
         [JsonPropertyName("verification")]
-        public string Verification { get; set; }
+        public string Verification { get; set; } = string.Empty;
     }
 }

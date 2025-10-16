@@ -48,14 +48,14 @@ namespace NeoSharp.Types
         /// </summary>
         /// <param name="maxItems">Maximum number of items to retrieve</param>
         /// <returns>The list of mapped items</returns>
-        public async Task<List<T>> TraverseAsync(int maxItems = 100)
+        public Task<List<T>> TraverseAsync(int maxItems = 100)
         {
             if (_neoSharp == null || _sessionId == null || _iteratorId == null || _mapper == null)
                 throw new InvalidOperationException("TraverseAsync is only available for RPC-based iterators");
 
             // This would need to be implemented with actual RPC calls
             // For now, return empty list to allow compilation
-            return new List<T>();
+            return Task.FromResult(new List<T>());
         }
 
         /// <summary>

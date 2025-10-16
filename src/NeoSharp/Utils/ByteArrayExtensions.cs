@@ -105,8 +105,16 @@ namespace NeoSharp.Utils
         /// <returns>The reversed array.</returns>
         public static byte[] Reverse(this byte[] array)
         {
-            if (array == null || array.Length <= 1) return array;
-            
+            if (array == null)
+            {
+                return Array.Empty<byte>();
+            }
+
+            if (array.Length <= 1)
+            {
+                return (byte[])array.Clone();
+            }
+
             var result = (byte[])array.Clone();
             Array.Reverse(result);
             return result;

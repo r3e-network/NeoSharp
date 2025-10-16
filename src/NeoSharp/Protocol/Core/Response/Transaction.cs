@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using NeoSharp.Types;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -38,19 +40,19 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the sender.
         /// </summary>
         [JsonPropertyName("sender")]
-        public string Sender { get; set; }
+        public string Sender { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the system fee.
         /// </summary>
         [JsonPropertyName("sysfee")]
-        public string SystemFee { get; set; }
+        public string SystemFee { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the network fee.
         /// </summary>
         [JsonPropertyName("netfee")]
-        public string NetworkFee { get; set; }
+        public string NetworkFee { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the valid until block.
@@ -62,25 +64,25 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the signers.
         /// </summary>
         [JsonPropertyName("signers")]
-        public List<TransactionSigner> Signers { get; set; }
+        public List<TransactionSigner> Signers { get; set; } = new();
 
         /// <summary>
         /// Gets or sets the attributes.
         /// </summary>
         [JsonPropertyName("attributes")]
-        public List<TransactionAttribute> Attributes { get; set; }
+        public List<TransactionAttribute> Attributes { get; set; } = new();
 
         /// <summary>
         /// Gets or sets the script.
         /// </summary>
         [JsonPropertyName("script")]
-        public string Script { get; set; }
+        public string Script { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the witnesses.
         /// </summary>
         [JsonPropertyName("witnesses")]
-        public List<NeoWitness> Witnesses { get; set; }
+        public List<NeoWitness> Witnesses { get; set; } = new();
 
         /// <summary>
         /// Gets or sets the block hash where this transaction was included.
@@ -104,6 +106,6 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the VM state.
         /// </summary>
         [JsonPropertyName("vmstate")]
-        public string VmState { get; set; }
+        public string VmState { get; set; } = string.Empty;
     }
 }

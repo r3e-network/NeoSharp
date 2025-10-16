@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -11,6 +13,6 @@ namespace NeoSharp.Protocol.Core.Response
         /// Gets or sets the network fee.
         /// </summary>
         [JsonPropertyName("networkfee")]
-        public string NetworkFee { get; set; }
+        public string NetworkFee { get; set; } = string.Empty;
     }
 }

@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+#nullable enable
+
 namespace NeoSharp.Protocol.Core.Response
 {
     /// <summary>
@@ -16,13 +18,13 @@ namespace NeoSharp.Protocol.Core.Response
             /// Gets or sets the public key.
             /// </summary>
             [JsonPropertyName("publickey")]
-            public string PublicKey { get; set; }
+            public string PublicKey { get; set; } = string.Empty;
 
             /// <summary>
             /// Gets or sets the votes.
             /// </summary>
             [JsonPropertyName("votes")]
-            public string Votes { get; set; }
+            public string Votes { get; set; } = string.Empty;
         }
     }
 }

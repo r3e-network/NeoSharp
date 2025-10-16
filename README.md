@@ -44,6 +44,19 @@ var config = new NeoSharpConfig().UseTestNet();
 var testNet = new NeoSharp("http://seed1.ngd.network:20332", config);
 ```
 
+### Advanced: Reuse Existing `HttpClient`
+
+```csharp
+using System.Net.Http;
+using Microsoft.Extensions.Logging;
+using NeoSharp.Protocol;
+using NeoSharp.Protocol.Http;
+
+var httpClient = httpClientFactory.CreateClient("neo-rpc"); // Provided by DI
+var transport = new HttpService("http://seed1.neo.org:10332", httpClient);
+var neoWithFactory = new NeoSharp(transport, logger: loggerFactory.CreateLogger<NeoSharp>());
+```
+
 ### Basic Operations
 
 ```csharp

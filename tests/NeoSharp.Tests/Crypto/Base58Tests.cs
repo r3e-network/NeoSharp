@@ -72,9 +72,10 @@ namespace NeoSharp.Tests.Crypto
             {
                 // Decode from Base58
                 var bytes = NeoSharp.Crypto.Base58.Decode(encoded);
-                
+                bytes.Should().NotBeNull();
+
                 // Convert bytes back to string
-                var result = Encoding.UTF8.GetString(bytes);
+                var result = Encoding.UTF8.GetString(bytes!);
                 
                 // Assert equal
                 result.Should().Be(decoded);
@@ -99,11 +100,9 @@ namespace NeoSharp.Tests.Crypto
             {
                 6, 161, 159, 136, 34, 110, 33, 238, 14, 79, 14, 218, 133, 13, 109, 40, 194, 236, 153, 44, 61, 157, 254
             };
-            var expectedOutput = "tz1Y3qqTg9HdrzZGbEjiCPmwuZ7fWVxpPtRw";
-            
             // Note: CheckEncode not available in NeoSharp.Crypto.Base58, using regular encoding
             var actualOutput = NeoSharp.Crypto.Base58.Encode(inputData);
-            
+
             // This test may need adjustment based on the actual Base58 implementation
             actualOutput.Should().NotBeEmpty();
         }
@@ -119,6 +118,7 @@ namespace NeoSharp.Tests.Crypto
 
             // Note: CheckDecode not available in NeoSharp.Crypto.Base58, using regular decoding
             var actualOutput = NeoSharp.Crypto.Base58.Decode(inputString);
+            actualOutput.Should().NotBeNull();
 
             // This test may need adjustment based on the actual Base58 implementation
             actualOutput.Should().NotBeEmpty();
@@ -174,7 +174,9 @@ namespace NeoSharp.Tests.Crypto
         public void TestBase58DecodingKnownValues(string base58Input, string expectedHex)
         {
             var result = NeoSharp.Crypto.Base58.Decode(base58Input);
-            var hex = TestConstants.BytesToHex(result);
+            result.Should().NotBeNull();
+
+            var hex = TestConstants.BytesToHex(result!);
             hex.Should().Be(expectedHex);
         }
 
@@ -195,7 +197,8 @@ namespace NeoSharp.Tests.Crypto
             encoded.Should().StartWith("111");
             
             var decoded = NeoSharp.Crypto.Base58.Decode(encoded);
-            decoded.Should().BeEquivalentTo(input);
+            decoded.Should().NotBeNull();
+            decoded!.Should().BeEquivalentTo(input);
         }
 
         [Fact]

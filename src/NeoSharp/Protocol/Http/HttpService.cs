@@ -6,16 +6,20 @@ using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
+
+#nullable enable
 
 namespace NeoSharp.Protocol.Http
 {
     /// <summary>
     /// HTTP service for JSON-RPC communication.
     /// </summary>
-    public class HttpService : IDisposable
+    public class HttpService : IJsonRpcClient, IDisposable
     {
         private readonly HttpClient _httpClient;
-        private readonly ILogger<HttpService> _logger;
+        private readonly bool _ownsHttpClient;
+        private readonly ILogger _logger;
         private readonly Uri _url;
         private readonly JsonSerializerOptions _jsonOptions;
         private bool _disposed;
@@ -26,11 +30,20 @@ namespace NeoSharp.Protocol.Http
         /// <param name="url">The RPC endpoint URL.</param>
         /// <param name="httpClient">The HTTP client to use.</param>
         /// <param name="logger">The logger instance.</param>
-        public HttpService(string url, HttpClient httpClient = null, ILogger<HttpService> logger = null)
+        public HttpService(string url, HttpClient? httpClient = null, ILogger? logger = null)
         {
             _url = new Uri(url);
-            _httpClient = httpClient ?? new HttpClient();
-            _logger = logger;
+            if (httpClient == null)
+            {
+                _httpClient = new HttpClient();
+                _ownsHttpClient = true;
+            }
+            else
+            {
+                _httpClient = httpClient;
+                _ownsHttpClient = false;
+            }
+            _logger = logger ?? NullLogger.Instance;
             _jsonOptions = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
@@ -46,20 +59,20 @@ namespace NeoSharp.Protocol.Http
         /// <param name="parameters">The method parameters.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The response.</returns>
-        public async Task<T> SendAsync<T>(string method, object[] parameters = null, CancellationToken cancellationToken = default)
+        public async Task<T> SendAsync<T>(string method, object[]? parameters = null, CancellationToken cancellationToken = default)
         {
             var request = new JsonRpcRequest
             {
                 JsonRpc = "2.0",
                 Method = method,
-                Params = parameters ?? Array.Empty<object>(),
+                Params = parameters ?? Array.Empty<object?>(),
                 Id = Guid.NewGuid().ToString()
             };
 
             var json = JsonSerializer.Serialize(request, _jsonOptions);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            _logger?.LogDebug("Sending JSON-RPC request: {Method}", method);
+            _logger.LogDebug("Sending JSON-RPC request: {Method}", method);
 
             try
             {
@@ -69,26 +82,38 @@ namespace NeoSharp.Protocol.Http
                 var responseJson = await response.Content.ReadAsStringAsync();
                 var rpcResponse = JsonSerializer.Deserialize<JsonRpcResponse<T>>(responseJson, _jsonOptions);
 
+                if (rpcResponse == null)
+                {
+                    _logger.LogError("JSON-RPC response payload is empty for method {Method}", method);
+                    throw new JsonRpcException("JSON-RPC response payload is empty or could not be deserialized.");
+                }
+
                 if (rpcResponse.Error != null)
                 {
                     throw new JsonRpcException($"JSON-RPC error {rpcResponse.Error.Code}: {rpcResponse.Error.Message}");
+                }
+
+                if (rpcResponse.Result is null)
+                {
+                    _logger.LogError("JSON-RPC response result is null for method {Method}", method);
+                    throw new JsonRpcException("JSON-RPC response result is null.");
                 }
 
                 return rpcResponse.Result;
             }
             catch (HttpRequestException ex)
             {
-                _logger?.LogError(ex, "HTTP request failed for method {Method}", method);
+                _logger.LogError(ex, "HTTP request failed for method {Method}", method);
                 throw new JsonRpcException($"HTTP request failed: {ex.Message}", ex);
             }
             catch (TaskCanceledException ex)
             {
-                _logger?.LogError(ex, "Request timeout for method {Method}", method);
+                _logger.LogError(ex, "Request timeout for method {Method}", method);
                 throw new JsonRpcException($"Request timeout: {ex.Message}", ex);
             }
             catch (JsonException ex)
             {
-                _logger?.LogError(ex, "JSON serialization error for method {Method}", method);
+                _logger.LogError(ex, "JSON serialization error for method {Method}", method);
                 throw new JsonRpcException($"JSON error: {ex.Message}", ex);
             }
         }
@@ -110,9 +135,9 @@ namespace NeoSharp.Protocol.Http
         {
             if (_disposed) return;
 
-            if (disposing)
+            if (disposing && _ownsHttpClient)
             {
-                _httpClient?.Dispose();
+                _httpClient.Dispose();
             }
 
             _disposed = true;
@@ -128,25 +153,25 @@ namespace NeoSharp.Protocol.Http
         /// Gets or sets the JSON-RPC version.
         /// </summary>
         [JsonPropertyName("jsonrpc")]
-        public string JsonRpc { get; set; }
+        public string JsonRpc { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the method name.
         /// </summary>
         [JsonPropertyName("method")]
-        public string Method { get; set; }
+        public string Method { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the parameters.
         /// </summary>
         [JsonPropertyName("params")]
-        public object[] Params { get; set; }
+        public object?[] Params { get; set; } = Array.Empty<object?>();
 
         /// <summary>
         /// Gets or sets the request ID.
         /// </summary>
         [JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = string.Empty;
     }
 
     /// <summary>
@@ -159,25 +184,25 @@ namespace NeoSharp.Protocol.Http
         /// Gets or sets the JSON-RPC version.
         /// </summary>
         [JsonPropertyName("jsonrpc")]
-        public string JsonRpc { get; set; }
+        public string JsonRpc { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the result.
         /// </summary>
         [JsonPropertyName("result")]
-        public T Result { get; set; }
+        public T? Result { get; set; }
 
         /// <summary>
         /// Gets or sets the error.
         /// </summary>
         [JsonPropertyName("error")]
-        public JsonRpcError Error { get; set; }
+        public JsonRpcError? Error { get; set; }
 
         /// <summary>
         /// Gets or sets the request ID.
         /// </summary>
         [JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = string.Empty;
     }
 
     /// <summary>
@@ -195,13 +220,13 @@ namespace NeoSharp.Protocol.Http
         /// Gets or sets the error message.
         /// </summary>
         [JsonPropertyName("message")]
-        public string Message { get; set; }
+        public string Message { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets additional error data.
         /// </summary>
         [JsonPropertyName("data")]
-        public object Data { get; set; }
+        public object? Data { get; set; }
     }
 
     /// <summary>

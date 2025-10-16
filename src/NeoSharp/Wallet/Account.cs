@@ -333,7 +333,7 @@ namespace NeoSharp.Wallet
                 Label = Label,
                 IsDefault = IsDefault,
                 Lock = IsLocked,
-                Key = _encryptedPrivateKey,
+                Key = _encryptedPrivateKey ?? string.Empty,
                 Contract = contract,
                 Extra = null
             };
