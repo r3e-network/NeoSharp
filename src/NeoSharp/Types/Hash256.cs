@@ -13,12 +13,17 @@ namespace NeoSharp.Types
     /// A Hash256 is a 32 bytes long hash created from some data by applying SHA-256.
     /// These hashes are typically used for block hashes, transaction hashes, and Merkle tree nodes.
     /// </summary>
-    public readonly struct Hash256 : IEquatable<Hash256>, IComparable<Hash256>, INeoSerializable
+    public struct Hash256 : IEquatable<Hash256>, IComparable<Hash256>, INeoSerializable
     {
         /// <summary>
         /// The hash is stored as a byte array in big-endian order.
         /// </summary>
-        private readonly byte[] _hash;
+        private byte[]? _hash;
+
+        /// <summary>
+        /// Zero-filled bytes used when the instance has not been initialised.
+        /// </summary>
+        private static readonly byte[] ZeroBytes = new byte[32];
 
         /// <summary>
         /// A zero-value hash.
@@ -28,7 +33,7 @@ namespace NeoSharp.Types
         /// <summary>
         /// The hash as a hexadecimal string in big-endian order without the '0x' prefix.
         /// </summary>
-        public string ToHex() => _hash?.ToHexString() ?? string.Empty;
+        public string ToHex() => EnsureInitialized().ToHexString();
 
         /// <summary>
         /// The size of a Hash256 in bytes.
@@ -74,14 +79,15 @@ namespace NeoSharp.Types
             if (bytes.Length != 32)
                 throw new ArgumentException($"Hash must be 32 bytes long but was {bytes.Length} bytes.");
 
-            _hash = bytes;
+            _hash = new byte[32];
+            Array.Copy(bytes, _hash, 32);
         }
 
         /// <summary>
         /// Returns the hash as a byte array in big-endian order.
         /// </summary>
         /// <returns>The hash as byte array</returns>
-        public byte[] ToArray() => (byte[])_hash.Clone();
+        public byte[] ToArray() => (byte[])EnsureInitialized().Clone();
 
         /// <summary>
         /// Returns the hash as a byte array in little-endian order.
@@ -89,8 +95,9 @@ namespace NeoSharp.Types
         /// <returns>The hash as byte array in little-endian order</returns>
         public byte[] ToLittleEndianArray()
         {
+            var source = EnsureInitialized();
             var result = new byte[32];
-            Array.Copy(_hash, result, 32);
+            Array.Copy(source, result, 32);
             Array.Reverse(result);
             return result;
         }
@@ -149,16 +156,17 @@ namespace NeoSharp.Types
         /// <returns>The deserialized hash</returns>
         public void Deserialize(Serialization.BinaryReader reader)
         {
+            var target = EnsureInitialized();
             var bytes = reader.ReadBytes(32);
             Array.Reverse(bytes); // Convert from little-endian to big-endian
-            Array.Copy(bytes, _hash, 32);
+            Array.Copy(bytes, target, 32);
         }
 
         public bool Equals(Hash256 other)
         {
-            if (_hash == null && other._hash == null) return true;
-            if (_hash == null || other._hash == null) return false;
-            return _hash.SequenceEqual(other._hash);
+            var left = EnsureInitialized();
+            var right = other._hash ?? ZeroBytes;
+            return left.SequenceEqual(right);
         }
 
         public override bool Equals(object? obj)
@@ -168,17 +176,16 @@ namespace NeoSharp.Types
 
         public override int GetHashCode()
         {
-            return _hash?.GetSequenceHashCode() ?? 0;
+            return EnsureInitialized().GetSequenceHashCode();
         }
 
         public int CompareTo(Hash256 other)
         {
-            if (_hash == null && other._hash == null) return 0;
-            if (_hash == null) return -1;
-            if (other._hash == null) return 1;
-            
-            var thisBigInt = new BigInteger(_hash, isUnsigned: true, isBigEndian: true);
-            var otherBigInt = new BigInteger(other._hash, isUnsigned: true, isBigEndian: true);
+            var left = EnsureInitialized();
+            var right = other._hash ?? ZeroBytes;
+
+            var thisBigInt = new BigInteger(left, isUnsigned: true, isBigEndian: true);
+            var otherBigInt = new BigInteger(right, isUnsigned: true, isBigEndian: true);
             return thisBigInt.CompareTo(otherBigInt);
         }
 
@@ -193,5 +200,13 @@ namespace NeoSharp.Types
 
         public static implicit operator string(Hash256 hash) => hash.ToHex();
         public static explicit operator Hash256(string hex) => new(hex);
+
+        /// <summary>
+        /// Ensures the internal buffer is initialised.
+        /// </summary>
+        private byte[] EnsureInitialized()
+        {
+            return _hash ??= new byte[32];
+        }
     }
 }

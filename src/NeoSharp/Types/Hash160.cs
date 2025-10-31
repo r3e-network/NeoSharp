@@ -14,12 +14,17 @@ namespace NeoSharp.Types
     /// A Hash160 is a 20 bytes long hash created from some data by first applying SHA-256 and then RIPEMD-160.
     /// These hashes are mostly used for obtaining the script hash of a smart contract or an account.
     /// </summary>
-    public readonly struct Hash160 : IEquatable<Hash160>, IComparable<Hash160>, INeoSerializable
+    public struct Hash160 : IEquatable<Hash160>, IComparable<Hash160>, INeoSerializable
     {
         /// <summary>
         /// The hash is stored as a byte array in big-endian order.
         /// </summary>
-        private readonly byte[] _hash;
+        private byte[]? _hash;
+
+        /// <summary>
+        /// Zero-filled bytes used when the instance has not been initialised.
+        /// </summary>
+        private static readonly byte[] ZeroBytes = new byte[20];
 
         /// <summary>
         /// A zero-value hash.
@@ -29,7 +34,7 @@ namespace NeoSharp.Types
         /// <summary>
         /// The script hash as a hexadecimal string in big-endian order without the '0x' prefix.
         /// </summary>
-        public string ToHex() => _hash?.ToHexString() ?? string.Empty;
+        public string ToHex() => EnsureInitialized().ToHexString();
 
         /// <summary>
         /// The size of a Hash160 in bytes.
@@ -75,14 +80,15 @@ namespace NeoSharp.Types
             if (bytes.Length != 20)
                 throw new ArgumentException($"Hash must be 20 bytes long but was {bytes.Length} bytes.");
 
-            _hash = bytes;
+            _hash = new byte[20];
+            Array.Copy(bytes, _hash, 20);
         }
 
         /// <summary>
         /// Returns the script hash as a byte array in big-endian order.
         /// </summary>
         /// <returns>The hash as byte array</returns>
-        public byte[] ToArray() => (byte[])_hash.Clone();
+        public byte[] ToArray() => (byte[])EnsureInitialized().Clone();
 
         /// <summary>
         /// Returns the script hash as a byte array in little-endian order.
@@ -90,8 +96,9 @@ namespace NeoSharp.Types
         /// <returns>The hash as byte array in little-endian order</returns>
         public byte[] ToLittleEndianArray()
         {
+            var source = EnsureInitialized();
             var result = new byte[20];
-            Array.Copy(_hash, result, 20);
+            Array.Copy(source, result, 20);
             Array.Reverse(result);
             return result;
         }
@@ -100,7 +107,7 @@ namespace NeoSharp.Types
         /// Returns the address corresponding to this script hash.
         /// </summary>
         /// <returns>The address string</returns>
-        public string ToAddress() => _hash.ScriptHashToAddress();
+        public string ToAddress() => EnsureInitialized().ScriptHashToAddress();
 
         /// <summary>
         /// Creates a script hash from the given address.
@@ -196,16 +203,17 @@ namespace NeoSharp.Types
         /// <param name="reader">The binary reader</param>
         public void Deserialize(Serialization.BinaryReader reader)
         {
+            var target = EnsureInitialized();
             var bytes = reader.ReadBytes(20);
             Array.Reverse(bytes); // Convert from little-endian to big-endian
-            Array.Copy(bytes, _hash, 20);
+            Array.Copy(bytes, target, 20);
         }
 
         public bool Equals(Hash160 other)
         {
-            if (_hash == null && other._hash == null) return true;
-            if (_hash == null || other._hash == null) return false;
-            return _hash.SequenceEqual(other._hash);
+            var left = EnsureInitialized();
+            var right = other._hash ?? ZeroBytes;
+            return left.SequenceEqual(right);
         }
 
         public override bool Equals(object? obj)
@@ -215,17 +223,16 @@ namespace NeoSharp.Types
 
         public override int GetHashCode()
         {
-            return _hash?.GetSequenceHashCode() ?? 0;
+            return EnsureInitialized().GetSequenceHashCode();
         }
 
         public int CompareTo(Hash160 other)
         {
-            if (_hash == null && other._hash == null) return 0;
-            if (_hash == null) return -1;
-            if (other._hash == null) return 1;
-            
-            var thisBigInt = new BigInteger(_hash, isUnsigned: true, isBigEndian: true);
-            var otherBigInt = new BigInteger(other._hash, isUnsigned: true, isBigEndian: true);
+            var left = EnsureInitialized();
+            var right = other._hash ?? ZeroBytes;
+
+            var thisBigInt = new BigInteger(left, isUnsigned: true, isBigEndian: true);
+            var otherBigInt = new BigInteger(right, isUnsigned: true, isBigEndian: true);
             return thisBigInt.CompareTo(otherBigInt);
         }
 
@@ -240,5 +247,13 @@ namespace NeoSharp.Types
 
         public static implicit operator string(Hash160 hash) => hash.ToHex();
         public static explicit operator Hash160(string hex) => new(hex);
+
+        /// <summary>
+        /// Ensures the internal buffer is initialised.
+        /// </summary>
+        private byte[] EnsureInitialized()
+        {
+            return _hash ??= new byte[20];
+        }
     }
 }
